@@ -4,7 +4,7 @@
   <title><![CDATA[Zerillian Engineering]]></title>
   <link href="http://zerilliworks.github.com/atom.xml" rel="self"/>
   <link href="http://zerilliworks.github.com/"/>
-  <updated>2013-03-09T03:39:48-05:00</updated>
+  <updated>2013-03-09T03:53:15-05:00</updated>
   <id>http://zerilliworks.github.com/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -12,16 +12,5 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[On the Way]]></title>
-    <link href="http://zerilliworks.github.com/blog/2013/03/09/on-the-way/"/>
-    <updated>2013-03-09T03:31:00-05:00</updated>
-    <id>http://zerilliworks.github.com/blog/2013/03/09/on-the-way</id>
-    <content type="html"><![CDATA[<p>It&#8217;s closer than it&#8217;s ever been.</p>
-
-<h2>DON&#8217;T PANIC.</h2>
-]]></content>
-  </entry>
   
 </feed>

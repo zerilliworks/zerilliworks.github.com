@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://zerilliworks.github.com/blog/2013/03/09/on-the-way/</loc>
-        <lastmod>2013-03-09T03:31:49-05:00</lastmod>
+        <loc>http://zerilliworks.github.com/blog/archives/</loc>
+        <lastmod>2013-03-09T02:07:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://zerilliworks.github.com/blog/archives/</loc>
-        <lastmod>2013-03-09T03:31:49-05:00</lastmod>
+        <loc>http://zerilliworks.github.com/blog/</loc>
+        <lastmod>2013-03-09T02:07:07-05:00</lastmod>
     </url>
     <url>
         <loc>http://zerilliworks.github.com/</loc>
-        <lastmod>2013-03-09T03:31:49-05:00</lastmod>
+        <lastmod>2013-03-09T03:49:16-05:00</lastmod>
     </url>
     <url>
         <loc>http://zerilliworks.github.com/robots.txt</loc>
