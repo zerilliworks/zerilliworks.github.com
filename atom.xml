@@ -4,7 +4,7 @@
   <title><![CDATA[Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-03-16T15:54:55-04:00</updated>
+  <updated>2013-03-16T16:02:39-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -28,7 +28,8 @@ be reasonably secure. I like fast and simple. AND NOW HERE I AM.</p>
 <p>Any seasoned (or even soft-boiled) developer realizes the potential of the terminal. I&#8217;m not an average
 web user. I shouldn&#8217;t have to learn the lingo of the CMS du-jour. if I want to build a good site or blog. I
 should be able to use basically three skills: Git, Markdown, and the terminal. No dicking through page
-after page of backend material. I already know these things, and they are unquestionably efficient.</p>
+after page of backend material. I already know these things, and they have proven themselves as my most
+enjoyable tools to use.</p>
 
 <p>I also wanted this blog to be fast. Software like WordPress, Movable Type, MojoMotor, Drupal&#8230; They&#8217;re
 burdened with significant overhead of processing and delivering pages. Some have plugins to help, but
@@ -36,7 +37,7 @@ I think that we shouldn&#8217;t even need them. Why would you ship a slow produc
 it safe and efficient? Seems like skipping a step.&dagger;</p>
 
 <p>I don&#8217;t want to pick on WordPress too much. Automattic is a neat company and deserves respect for making
-blogging and site creation so accessible. It just becomes less efficient when you &#8220;know better.&#8221;</p>
+blogging and site creation so accessible. For me, it became less efficient once I &#8220;knew better.&#8221;</p>
 
 <p>So here I am working with Octopress. I get tap out Markdown without needing a web-based WYSIWYG editor
 and type a command to send everything up to the free Github Pages service. This blog is what I&#8217;d call
@@ -53,7 +54,7 @@ Good sir, you&#8217;re the only reason I actually had enough fun putting up a bl
 hosting. I&#8217;m a PHP programmer for sure, and I know there are things PHP and its derivative frameworks
 are good at.</p>
 
-<p>Simple blogging just isn&#8217;t one of them.</p>
+<p>Simple blogging just isn&#8217;t putting the best foot forward.</p>
 
 <h4>&dagger; <em>Yeah, ORACLE.</em></h4>
 ]]></content>
