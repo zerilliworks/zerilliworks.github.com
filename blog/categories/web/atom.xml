@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Web | Zerillian Engineering]]></title>
+  <link href="http://blog.zerilliworks.net/blog/categories/web/atom.xml" rel="self"/>
+  <link href="http://blog.zerilliworks.net/"/>
+  <updated>2013-03-16T15:17:31-04:00</updated>
+  <id>http://blog.zerilliworks.net/</id>
+  <author>
+    <name><![CDATA[Armand Zerilli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Why Octopress?]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/03/16/why-octopress/"/>
+    <updated>2013-03-16T14:40:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/03/16/why-octopress</id>
+    <content type="html"><![CDATA[<p>I could have just tossed a WordPress installation up somewhere. It probably would have taken less time
+to set up. But I'm not a big fan of WordPress. I'm not a big fan of anything that needs extra plugins to
+be reasonably secure.</p>
+
+<p>Any seasoned (or even soft-boiled) developer realizes the potential of the terminal. I'm not an average
+web user. I shouldn't have to learn the lingo of the CMS du-jour. if I want to build a good site or blog. I
+should be able to use basically three skills: Git, Markdown, and the terminal. No dicking through page
+after page of backend material. I already know these things, and they are unquestionably efficient.</p>
+
+<p>I also wanted this blog to be fast. Software like WordPress, Movable Type, MojoMotor, Drupal... They're
+burdened with significant overhead of processing and delivering pages. Some have plugins to help, but
+I think that we shouldn't even need them. Why would you ship a slow product and have third parties make
+it safe and efficient? Seems like skipping a step.&dagger;</p>
+
+<p>I don't want to pick on WordPress too much. Automattic is a neat company and deserves respect for making
+blogging and site creation so accessible. It just becomes less efficient when you "know better."</p>
+
+<p>So here I am working with Octopress. I get tap out Markdown without needing a web-based WYSIWYG editor
+and type a command to send everything up to the free Github Pages service. This blog is what I'd call
+"TV Magic." Like on cooking shows. All of the same things happen here that would happen on a dynamic
+site, just done beforehand so they come out quick. Similar to the ways Emeril Lagasse has his roasts
+roasting an hour before the show. Just when they're ready, it's <em>Bam</em> and we have dinner.</p>
+
+<p>Octopress is wonderful software, and definite props to Brandon Mathis for his work making Jekyll friendly.
+Good sir, you're the only reason I actually had enough fun putting up a blog to... Well, put up a blog.</p>
+
+<p><a href="http://octopress.org">Octopress - A blogging framework for hackers</a></p>
+
+<p>At the end of the day, roasting my roasts in advance means low overhead, faster requests, and simple
+hosting. I'm a PHP programmer for sure, and I know there are things PHP and its derivative frameworks
+are good at.</p>
+
+<p>Simple blogging just isn't one of them.</p>
+
+<h4>&dagger; <em>Yeah, ORACLE.</em></h4>
+]]></content>
+  </entry>
+  
+</feed>
