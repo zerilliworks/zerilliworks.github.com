@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Personal | Zerillian Engineering]]></title>
-  <link href="http://zerilliworks.github.com/blog/categories/personal/atom.xml" rel="self"/>
-  <link href="http://zerilliworks.github.com/"/>
-  <updated>2013-03-16T03:22:48-04:00</updated>
-  <id>http://zerilliworks.github.com/</id>
+  <link href="http://blog.zerilliworks.net/blog/categories/personal/atom.xml" rel="self"/>
+  <link href="http://blog.zerilliworks.net/"/>
+  <updated>2013-03-16T03:24:37-04:00</updated>
+  <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Preeow, Universe.]]></title>
-    <link href="http://zerilliworks.github.com/blog/2013/03/09/preeow/"/>
+    <link href="http://blog.zerilliworks.net/blog/2013/03/09/preeow/"/>
     <updated>2013-03-09T02:23:00-05:00</updated>
-    <id>http://zerilliworks.github.com/blog/2013/03/09/preeow</id>
+    <id>http://blog.zerilliworks.net/blog/2013/03/09/preeow</id>
     <content type="html"><![CDATA[<p>I've heard that one of the big things that separates mediocre programmers from
 good ones is blog writing. Participation in the open source scene is huge as well,
 but getting people to listen to you is eye-opening and empowering. At least, I feel
