@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Personal | Zerillian Engineering]]></title>
   <link href="http://zerilliworks.github.com/blog/categories/personal/atom.xml" rel="self"/>
   <link href="http://zerilliworks.github.com/"/>
-  <updated>2013-03-16T02:55:50-04:00</updated>
+  <updated>2013-03-16T03:22:48-04:00</updated>
   <id>http://zerilliworks.github.com/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -43,28 +43,24 @@ was a pain in the ass.</p>
 
 <blockquote><p>How many programmers does it take to screw in a lightbulb? None, that's a hardware problem!</p></blockquote>
 
-<p>Oh, how we laughed. Although I do not own the cliche t-shirt you might be thinking
-of, I can assure you that I am now very much in opposition of outsourcing one's
-lightbulb screwing. People used to ask me to build machines for them. I told them
-it was just like putting together expensive weirdly-shaped Legos. Easier in some
-ways, because computer Legos often only go together one way.</p>
+<p>Oh, how we laughed.</p>
 
 <p>So in the same ways I've taken on a DIY attitude, I've taught myself everything I
 know about these electric beasts. They are deeply fascinating to me. I've seen more
 than a handful of bright-eyed young programmers showcase what I call hollow talent.
-It's similar to how you might bullshit someone you're talking to such that you
+It's similar to how you might bulls--t someone you're talking to such that you
 appear to be informed about the topic at hand. Sadly, a lot of this fresh talent is
 built on looking up into higher constructs while not understanding the activity
 that drives them.</p>
 
 <p>My first programming experience came while learning about robotics in a summer-camp
-sort of program. I was just about thirteen, and we had a lot to play with. They had
+sort of program. I was just about twelve, and we had a lot to play with. They had
 those nifty Lego robitcs sets, sure. But the real pleasure was working with a real
 machine; the <em>Parallax BASIC Stamp</em> was the first real computer I've ever bossed
 around.</p>
 
 <p>On a microcontroller, you don't get any help. There are functions and implementations
-that keep your hardware afloat, and that's it. You don't get any help. No standard
+that keep your hardware afloat, and that's it. No standard
 libraries. All you have is math and memory access, essentially. That was my boot
 camp.</p>
 
@@ -82,6 +78,14 @@ with what I learned. Learning enabled a unique kind of excitement for me, and I
 never lost the desire to learn. The self-teaching process, though frustrating at
 times, is still the activity I find most rewarding.</p>
 
+<p>I kept it rolling, picking up C++ while I worked with openFrameworks (which was unbelievably
+fun) and later PHP, where I got my foundation in web programming. HTML, CSS, JavaScript...
+They all came along with it. And now I'm further pushing my boundaries in the web with
+languages like Ruby and Erlang. I was never much a fan of Python, but to be fair I never
+gave it a thorough try.</p>
+
+<p>And these all just barely scratch the surface. I have so much more to illuminate.</p>
+
 <p>I tend not to think in absolutes. There are some issues that polarize me, but I've
 always been a rather open-minded individual. I contrast this to a majority of tech
 bloggers whom are opinionated, stubborn, and elitist. I'll admit that these are
@@ -95,6 +99,11 @@ don't hold my methods as perfect or authorotative. There's often a better way to
 things. Even if I'm solving a problem to the best of my ability or in the best
 possible way, I like to remain aware of and receptive to concepts carried in on the
 intermittent gusts of fresh air.</p>
+
+<p>All of this experience and philosophy culminates in my overarching life goal: To be helpful.
+A lot of people have a lot of problems, and somehow I plan on solving at least one of them.</p>
+
+<p>This is me. And I can be very helpful.</p>
 ]]></content>
   </entry>
   
