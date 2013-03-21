@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Thoughts | Zerillian Engineering]]></title>
+  <link href="http://blog.zerilliworks.net/blog/categories/thoughts/atom.xml" rel="self"/>
+  <link href="http://blog.zerilliworks.net/"/>
+  <updated>2013-03-21T01:11:09-04:00</updated>
+  <id>http://blog.zerilliworks.net/</id>
+  <author>
+    <name><![CDATA[Armand Zerilli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Complicated or Other Kind of Complicated?]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/03/17/complicated-or-other-kind-of-complicated/"/>
+    <updated>2013-03-17T03:01:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/03/17/complicated-or-other-kind-of-complicated</id>
+    <content type="html"><![CDATA[<p>I make a lot of choices while working on a project, mostly a large collection of tiny architectural choices that will impact how I build my applications. The words  <em>simple</em> and <em>complicated</em>, I've found, are very deceptive blanket statements. Sometimes, I have to trade off different kinds of complexity that add upp to the greatest efficiency versus smallest amount of frustration.</p>
+
+<!-- more -->
+
+
+<h2>Sometimes You Can't Win.</h2>
+
+<p>There are so many different ideas about the easiest/best/fastest/simplest way to do things. Seems like everyone's got a philosophy. <strong>NOW, THERE IS NOTHING INHERENTLY WRONG WITH THAT.</strong> I've got my own little bubble of philosophy I like to stick to. The unfortunate part is that there is a pretty wide spectrum of impresicse language that <a href="http://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Words_to_watch#Puffery">attribute ambiguous meaning to ideas without much factual support.</a></p>
+
+<p>I'll give an example. I'm laying out all the bits and pieces of a medical app right now, and I'm at the pivotal point of getting to pick what language and framework I'll be using. I've surveyed a bunch of web technologies to choose the best <em>(with "best" being a relative term).</em></p>
+
+<p>Everybody wants simplicity, but be aware what you may be trading it for. In my case, I'm choosing between PHP with the <a href="http://laravel.com/">Laravel</a> framework or Ruby on Rails. Familiarity is the big discrepancy. Both parties have proponents and those who preach the beautiful elegance of their respective platform. But PHP is at heart an icky language and I know little about serious use of Ruby at this point. <strong>DAMN.</strong></p>
+
+<p>And when they dangle s--t like this in front of you:</p>
+
+<p><img src="/images/articles/rails.png" alt="Ruby on Rails homepage banner" /></p>
+
+<p><strong>WHO COULD POSSIBLY RESIST?</strong></p>
+
+<p>Tread lightly, Armand. Don't get caught up in the sparkling beauty of these systems. Remember that something's gotta give and to barter for the kind of complexity you can handle best.</p>
+
+<p>I know PHP and Laravel very well, meaning I could get straight to work building the app. Rails seems super slick, though I admittedly know little about it. I'd have to learn everything while I work. As I mentioned in <a href="/blog/2013/03/09/preeow/">my introductory post</a>, I love learning, but I take my sweet time to get the in-depth understanding I desire.</p>
+
+<p>I get easily flustered when I begin to subscribe to everyone's callouts regarding the streamlined versus the intricate. Not all complications have to be crippling, but be sure to pick them carefully. Until we start writing our apps with LOVE (<a href="http://worldofgoo.wikia.com/wiki/MOM"><em>a new scripting language where you write applications using 'feelings'</em></a>) I believe these sorts of choices will continue to thornily remind us of their irksomeness.</p>
+
+<p>Pick your manifold code-wads with care.</p>
+]]></content>
+  </entry>
+  
+</feed>

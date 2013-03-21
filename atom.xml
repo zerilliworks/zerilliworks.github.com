@@ -4,7 +4,7 @@
   <title><![CDATA[Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-03-17T02:14:06-04:00</updated>
+  <updated>2013-03-21T01:11:09-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Complicated or Other Kind of Complicated?]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/03/17/complicated-or-other-kind-of-complicated/"/>
+    <updated>2013-03-17T03:01:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/03/17/complicated-or-other-kind-of-complicated</id>
+    <content type="html"><![CDATA[<p>I make a lot of choices while working on a project, mostly a large collection of tiny architectural choices that will impact how I build my applications. The words  <em>simple</em> and <em>complicated</em>, I&#8217;ve found, are very deceptive blanket statements. Sometimes, I have to trade off different kinds of complexity that add upp to the greatest efficiency versus smallest amount of frustration.</p>
+
+<!-- more -->
+
+
+<h2>Sometimes You Can&#8217;t Win.</h2>
+
+<p>There are so many different ideas about the easiest/best/fastest/simplest way to do things. Seems like everyone&#8217;s got a philosophy. <strong>NOW, THERE IS NOTHING INHERENTLY WRONG WITH THAT.</strong> I&#8217;ve got my own little bubble of philosophy I like to stick to. The unfortunate part is that there is a pretty wide spectrum of impresicse language that <a href="http://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Words_to_watch#Puffery">attribute ambiguous meaning to ideas without much factual support.</a></p>
+
+<p>I&#8217;ll give an example. I&#8217;m laying out all the bits and pieces of a medical app right now, and I&#8217;m at the pivotal point of getting to pick what language and framework I&#8217;ll be using. I&#8217;ve surveyed a bunch of web technologies to choose the best <em>(with &#8220;best&#8221; being a relative term).</em></p>
+
+<p>Everybody wants simplicity, but be aware what you may be trading it for. In my case, I&#8217;m choosing between PHP with the <a href="http://laravel.com/">Laravel</a> framework or Ruby on Rails. Familiarity is the big discrepancy. Both parties have proponents and those who preach the beautiful elegance of their respective platform. But PHP is at heart an icky language and I know little about serious use of Ruby at this point. <strong>DAMN.</strong></p>
+
+<p>And when they dangle s&#8211;t like this in front of you:</p>
+
+<p><img src="http://blog.zerilliworks.net/images/articles/rails.png" alt="Ruby on Rails homepage banner" /></p>
+
+<p><strong>WHO COULD POSSIBLY RESIST?</strong></p>
+
+<p>Tread lightly, Armand. Don&#8217;t get caught up in the sparkling beauty of these systems. Remember that something&#8217;s gotta give and to barter for the kind of complexity you can handle best.</p>
+
+<p>I know PHP and Laravel very well, meaning I could get straight to work building the app. Rails seems super slick, though I admittedly know little about it. I&#8217;d have to learn everything while I work. As I mentioned in <a href="http://blog.zerilliworks.net/blog/2013/03/09/preeow/">my introductory post</a>, I love learning, but I take my sweet time to get the in-depth understanding I desire.</p>
+
+<p>I get easily flustered when I begin to subscribe to everyone&#8217;s callouts regarding the streamlined versus the intricate. Not all complications have to be crippling, but be sure to pick them carefully. Until we start writing our apps with LOVE (<a href="http://worldofgoo.wikia.com/wiki/MOM"><em>a new scripting language where you write applications using &#8216;feelings&#8217;</em></a>) I believe these sorts of choices will continue to thornily remind us of their irksomeness.</p>
+
+<p>Pick your manifold code-wads with care.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Why Octopress?]]></title>
