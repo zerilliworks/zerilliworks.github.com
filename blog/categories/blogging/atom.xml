@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Blogging | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/blogging/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-03-21T01:11:09-04:00</updated>
+  <updated>2013-03-21T15:52:19-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -39,7 +39,7 @@ it safe and efficient? Seems like skipping a step.&dagger;</p>
 <p>I don't want to pick on WordPress too much. Automattic is a neat company and deserves respect for making
 blogging and site creation so accessible. For me, it became less efficient once I "knew better."</p>
 
-<p>So here I am working with Octopress. I get tap out Markdown without needing a web-based WYSIWYG editor
+<p>So here I am working with Octopress. I get to tap out Markdown without needing a web-based WYSIWYG editor
 and type a command to send everything up to the free Github Pages service. This blog is what I'd call
 "TV Magic." Like on cooking shows. All of the same things happen here that would happen on a dynamic
 site, just done beforehand so they come out quick. Similar to the ways Emeril Lagasse has his roasts
@@ -54,9 +54,11 @@ Good sir, you're the only reason I actually had enough fun putting up a blog to.
 hosting. I'm a PHP programmer for sure, and I know there are things PHP and its derivative frameworks
 are good at.</p>
 
-<p>Simple blogging just isn't putting the best foot forward.</p>
+<p>Simple blogging just isn't putting PHP's best foot forward.</p>
 
-<h4>&dagger; <em>Yeah, ORACLE.</em></h4>
+<p>&dagger; <em>Yeah, ORACLE.</em></p>
+
+<p><em>Note: Edited for spelling/grammar on March 21, 2013</em></p>
 ]]></content>
   </entry>
   
