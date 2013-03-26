@@ -4,7 +4,7 @@
   <title><![CDATA[Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-03-21T15:52:19-04:00</updated>
+  <updated>2013-03-26T03:48:36-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[None of This is Okay With Me.]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/03/26/none-of-this-is-okay-with-me/"/>
+    <updated>2013-03-26T00:59:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/03/26/none-of-this-is-okay-with-me</id>
+    <content type="html"><![CDATA[<h3>Or: Why You Should NEVER Make Robots Fake Sincerity</h3>
+
+<p>While helping a friend construct a website, I signed up for Weebly. I didn&#8217;t even have a website, I was just a collaborator. I didn&#8217;t want anything to do with Weebly. For some reason, she began getting uncomfortably clingy. Look at this as an example of how to creep out your customers.</p>
+
+<!-- more -->
+
+
+<p>I&#8217;ll be clear now that I do not like drag-and-drop site builders. Only one such service have I ever described in terms that may be optimistically construed as &#8220;fond&#8221; &#8211; that service being Squarespace. And that&#8217;s only because they opened up their internals to developers.</p>
+
+<p>So have a look at this.</p>
+
+<p><img src="http://blog.zerilliworks.net/images/articles/Weebly-Believing.png" title="Don't stop believin' (in your website)" ></p>
+
+<p><a href="http://blog.zerilliworks.net/downloads/weebly-believing.txt/">If you can&#8217;t see the image, click here for the text version.</a></p>
+
+<p>The time since I signed up is probably the second worst thing about this. It&#8217;s just odd. It reminds me that there is some task somewhere (clearly not a human) that is looking over less-than-frequently-active accounts and telling them to get going. It&#8217;s unbelievably insincere, and it&#8217;s frankly a little condescending. How so?</p>
+
+<blockquote><p>Maybe you got busy and forgot about your website. We understand. When you signed up you probably had a vision for your site. We want to help you make that a reality. We promise that Weebly truly is the easiest way to create a website.</p></blockquote>
+
+<p>Of course I had a vision. Perhaps I own a business, I sell goods, I&#8217;m an artist, I&#8217;m a traveller, I&#8217;m a game show contestant with a penchant for blogging. What&#8217;s gonna matter is my content. If I&#8217;m passionate enough, I&#8217;ll find the best way to present it. Nobody who has any real desire to run a website would forget about it for 29 days, 16 hours, 7 minutes and 47 seconds.</p>
+
+<p>This helpful message is a little too chummy. It is certainly not sincerely endorsed by the Weebly Team, it was sent by a robot that&#8217;s been told how to sound friendly. A person wrote generic text without much thought and I was on the receiving end of a template engine fed with those words. Nothing really makes me feel less cared for than robots acting like people. Giving them a little personality can be okay, but this is kind of insulting. Is your team actually nervous that I might not realize the full potential of my business? That&#8217;s something investors worry about. And something robots think nothing of.</p>
+
+<p>Then this happens:</p>
+
+<p><img src="http://blog.zerilliworks.net/images/articles/Weebly-Sniffle.png" title="Sniffle. Sniffle..." ></p>
+
+<p><a href="http://blog.zerilliworks.net/downloads/weebly-sniffle.txt/">If you can&#8217;t see the image, click here for the text version.</a></p>
+
+<p>The title of this message was &#8220;That&#8217;s sad.&#8221; No, this email is the sad thing. You trained machines to sound sympathetic, and it&#8217;s just unsettling to make them cry. <em>For the love of God, knock it off.</em> There&#8217;s nothing wrong with the concept of automated messages. But <em>please</em> do not make them f&#8211;king cry. That does not make me feel cared for. Your team doesn&#8217;t seem to be there for me, it seems like you need to clutch your flaky customers in a death grip.</p>
+
+<p>Don&#8217;t fret though, you fantastically sincere liars, I think this email could be fixed pretty easily.</p>
+
+<p><img src="http://blog.zerilliworks.net/images/articles/Weebly-Sniffle-fixed.png" title="Just take a Sharpie to it." ></p>
+
+<p>There. That&#8217;s basically free advice, Weebly. If your team is feeling sincere and nervous and sympathetic, my typical consulting fee is $17,000.</p>
+
+<p>For the record, one of their founders eventually sent me a personal email asking for feedback. Way to go, fellas. That&#8217;s where you lay on the charm, in the actual exchanges between actual people. That redeemed their support team a bit. That was someone who was really wondering what went wrong and wanted to find a solution. I&#8217;m not being sarcastic there, if you&#8217;re looking to connect with a customer, a real live human being is the way to do it. I absolutely love that.</p>
+
+<p>Sending automated emails that cry is tantamount to deception. That&#8217;s what I have to say to them.</p>
+
+<p>I can&#8217;t be the only person that feels this way. I very highly value genuine interactions, and pretty much any attempt to imbue emotion without real effort is simply insulting to me.</p>
+
+<p>Seriously, without the mendacious nervousness and sniffles, these would be just helpful emails. I might have read them without rolling my eyes.</p>
+
+<p>If you&#8217;re someone who also dislikes this sort of indiscretion, I&#8217;d appreciate a comment so I know I&#8217;m not alone.</p>
+
+<p>Also, if you happen to be an English professor and would like to tell me whether I should have used <em>whom</em> in that last sentence, I would appreciate it.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Complicated or Other Kind of Complicated?]]></title>
