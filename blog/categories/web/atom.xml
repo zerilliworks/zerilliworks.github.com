@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-03-31T21:23:09-04:00</updated>
+  <updated>2013-03-31T21:28:51-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[AJAX Loading Done Right]]></title>
+    <title type="html"><![CDATA[AJAX Loading Done Right (and Wrong)]]></title>
     <link href="http://blog.zerilliworks.net/blog/2013/03/31/ajax-loading-done-right/"/>
     <updated>2013-03-31T23:17:00-04:00</updated>
     <id>http://blog.zerilliworks.net/blog/2013/03/31/ajax-loading-done-right</id>
@@ -33,7 +33,7 @@
 
 <p>That's an important notice about checkin times. Should probably read that. It's just suction-cupped to the sliding doors. But I can't quite read it from back here.</p>
 
-<p><a href="/images/articles/hotel-doors/thats_convenient.jpg"><img src="/images/articles/hotel-doors/thats_convenient.jpg"></a></p>
+<p><a href="/images/articles/hotel-doors/thats_convenient.jpg"><img class="left" src="/images/articles/hotel-doors/thats_convenient.jpg"></a></p>
 
 <p>I could still go get up close and try to read it, but I tried and stood out of the way of the sensors and the doors closed again. This is basically no different from an improper implementation of dynamic content loading in social sites. So this is what I think of all that.</p>
 
