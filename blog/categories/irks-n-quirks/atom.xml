@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Irks 'n Quirks | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/irks-n-quirks/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-03-31T21:28:51-04:00</updated>
+  <updated>2013-03-31T22:52:04-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -18,11 +18,11 @@
     <link href="http://blog.zerilliworks.net/blog/2013/03/31/ajax-loading-done-right/"/>
     <updated>2013-03-31T23:17:00-04:00</updated>
     <id>http://blog.zerilliworks.net/blog/2013/03/31/ajax-loading-done-right</id>
-    <content type="html"><![CDATA[<p>Oh man. This really bothers me. Most of the time, it's just not well-implemented. And when it is, I always appreciate it.</p>
+    <content type="html"><![CDATA[<p>Oh man. This really bothers me. Some of the time, it's just not well-implemented. And when it is, I always appreciate it.</p>
 
 <p><em>Note: For non-technical people, AJAX loading is a term for what browsers do when they load more content without needing to load another page. A good example is Facebook news feeds. I'll use it interchangeably with terms such as dynamic loading or auto loading.</em></p>
 
-<p>A lot of websites just love to keep streaming content into your browser, sometimes as you're scrolling along. Done properly, this is a useful annoyance-relieving tool. When botched, AJAX loading is an obtuse pain in the ass. Here are my impressions and some examples of the good, the bad, and the ugly.</p>
+<p>A lot of websites just love to keep streaming content into your browser, sometimes as you're scrolling along. Done properly, this is a useful annoyance-relieving tool. When botched, AJAX loading is an obtuse pain in the ass. In this post, I'll look into mostly good implementations to show you the reasons these work pretty well. Usually.</p>
 
 <!-- more -->
 
@@ -37,7 +37,7 @@
 
 <p>I could still go get up close and try to read it, but I tried and stood out of the way of the sensors and the doors closed again. This is basically no different from an improper implementation of dynamic content loading in social sites. So this is what I think of all that.</p>
 
-<p>Firstly, you're in trouble if you think people always want to see more. I think it can be more intuitive. Assume people want to see <em>less</em> and that they will <em>ask</em> for more. Case study: Vimeo.</p>
+<p>Firstly, you're in trouble if you think people always want to see more. I think it can be more intuitive. Assume people want to see <em>less</em> and that they will <em>ask</em> for more. Quick case study: Vimeo.</p>
 
 <p>When you log in to Vimeo, you'll see a feed of videos added to the channels you follow in a nice little list there. It shows about ten items to start with. At the bottom, there's a link that says "Load more videos". Once you've clicked that, it turns on AJAX loading of more entries. Toggling auto loading AND limiting the information inflow? Atta boy.</p>
 
@@ -53,7 +53,7 @@
 
 <p><a href="/images/articles/ajax_examples/Facebook.png"><img class="center" src="/images/articles/ajax_examples/Facebook.png" title="&#34;AJAX loading is pushing interface elements out of the way. That's a tad annoying.&#34;" alt="&#34;AJAX loading is pushing interface elements out of the way. That's a tad annoying.&#34;"></a></p>
 
-<h3><strong>MUST TRY HARDER, FACEBOOK.</strong></h3>
+<h3><strong>CLOSE BUT NO CIGAR, FACEBOOK.</strong></h3>
 
 <p>I've got one more positive example of sites that keep adding to pages: Myspace. The New Myspace features a radically reconstructed design, with one of the slickest web app UIs I have ever seen. I'm serious, I have never been remotely interested in Myspace until they unveiled the new design. My praise for it is worthy of another post, however.</p>
 
@@ -82,6 +82,18 @@
 <h3><strong>GOOD ON YA, KODING.</strong></h3>
 
 <p>By the way, I'm working on a write-up of Koding, so that'll give you a better idea of how everything fits together.</p>
+
+<p>How about some bad reasons to use it? It certainly depends on the nature of the content you provide. Social sites love it because data is always coming in, and they can't be certain of how much you've seen and what you've missed. So why not let you keep rolling until you've had your fill? Sensible enough. I picked at Facebook because they still had a footer. Seriously, they are mutually exclusive. Why even have something that just gets bumped all the time?</p>
+
+<p>It also puts a burden on the client. The browser is in charge of managing everything, and if you leave Facebook open for a long time, you might find your browser getting a bit sluggish. It adds a lot of complexity for sometimes marginal gain.</p>
+
+<p>If you're not careful, it can also break the flow of a reader's traversal through information. Most AJAX-loading sites don't pick up where you left off if you click a link and go back. If your site has you jumping in and out of links, like on an infinite-scrolling tumblr blog, it can break. You get capped at the initial end of the page as the browser tries to scroll back down to where you were.</p>
+
+<p>Auto-loading blog posts is typically bad practice, so I think.</p>
+
+<p>Another worry is making your content grey. Generic and blended together. Nondistinct. Pinterest suffers this, and <a href="http://mcfunley.com/design-for-continuous-experimentation">so did Etsy for a while</a> (skip to slide 25.) Infinite scrolling establishes <em>momentum</em>, meaning users get rolling and look at each piece of data for a fraction of a second. It's hard to tell stuff apart. It's possible to fly by thousands of items and really only see a handful. It encourages haste, and that leads to minimal engagement.</p>
+
+<p>If your implementation of infinite scrolling pushes away interface elements, fuses elements into a blur of unremarkability, or breaks a clean traversal of references and links, you might need to re-think it. Essentially, support your data and the behavior of your users.</p>
 
 <p>One last case I'll mention: Google.</p>
 
