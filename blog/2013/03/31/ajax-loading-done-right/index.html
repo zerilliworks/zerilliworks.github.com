@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>AJAX Loading Done Right - Zerillian Engineering</title>
+  <meta name="author" content="Armand Zerilli">
+
+  
+  <meta name="description" content="Oh man. This really bothers me. Most of the time, it&#8217;s just not well-implemented. And when it is, I always appreciate it. Note: For non- &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.zerilliworks.net/blog/2013/03/31/ajax-loading-done-right/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Zerillian Engineering" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Wire+One|Source+Code+Pro|Unica+One|Raleway|Titillium+Web" rel="stylesheet" type="text/css">
+
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32979394-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.zerilliworks.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+
+<ul class="main-navigation">
+  <li><a href="/"><img src="/images/logo.png"></a></li>
+  <li><a href="/blog">Blog</a></li>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Zerillian Engineering</a></h1>
+  
+    <h2>Software that doesn't want to kill you.</h2>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">AJAX Loading Done Right</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-31T23:17:00-04:00" pubdate data-updated="true">Mar 31<span>st</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Oh man. This really bothers me. Most of the time, it&#8217;s just not well-implemented. And when it is, I always appreciate it.</p>
+
+<p><em>Note: For non-technical people, AJAX loading is a term for what browsers do when they load more content without needing to load another page. A good example is Facebook news feeds. I&#8217;ll use it interchangeably with terms such as dynamic loading or auto loading.</em></p>
+
+<p>A lot of websites just love to keep streaming content into your browser, sometimes as you&#8217;re scrolling along. Done properly, this is a useful annoyance-relieving tool. When botched, AJAX loading is an obtuse pain in the ass. Here are my impressions and some examples of the good, the bad, and the ugly.</p>
+
+<!-- more -->
+
+
+<p>Let me provide a real-life analogy. Click/tap on any image in this article for a full-size version.</p>
+
+<p><a href="/images/articles/hotel-doors/checkin_notice.jpg"><img src="/images/articles/hotel-doors/checkin_notice.jpg"></a></p>
+
+<p>That&#8217;s an important notice about checkin times. Should probably read that. It&#8217;s just suction-cupped to the sliding doors. But I can&#8217;t quite read it from back here.</p>
+
+<p><a href="/images/articles/hotel-doors/thats_convenient.jpg"><img src="/images/articles/hotel-doors/thats_convenient.jpg"></a></p>
+
+<p>I could still go get up close and try to read it, but I tried and stood out of the way of the sensors and the doors closed again. This is basically no different from an improper implementation of dynamic content loading in social sites. So this is what I think of all that.</p>
+
+<p>Firstly, you&#8217;re in trouble if you think people always want to see more. I think it can be more intuitive. Assume people want to see <em>less</em> and that they will <em>ask</em> for more. Case study: Vimeo.</p>
+
+<p>When you log in to Vimeo, you&#8217;ll see a feed of videos added to the channels you follow in a nice little list there. It shows about ten items to start with. At the bottom, there&#8217;s a link that says &#8220;Load more videos&#8221;. Once you&#8217;ve clicked that, it turns on AJAX loading of more entries. Toggling auto loading AND limiting the information inflow? Atta boy.</p>
+
+<p><a href="/images/articles/ajax_examples/Vimeo.png"><img class="center" src="/images/articles/ajax_examples/Vimeo.png" title="&#34;Toggling auto loading AND limiting the information inflow? Atta boy.&#34;" alt="&#34;Toggling auto loading AND limiting the information inflow? Atta boy.&#34;"></a></p>
+
+<h3><strong>GOOD JOB, VIMEO.</strong></h3>
+
+<p>Try being conservative. I&#8217;ve heard a lot of complaints about these loading methods taking up too much space, but I don&#8217;t think anyone&#8217;s ever complained about <em>not</em> being flooded with information. Give us the choice, please.</p>
+
+<p>Sometimes, you can&#8217;t stop it. There&#8217;s no choice. You have to keep scrolling forever, until you run out of things to scroll by. Or your fingers fall off, or the friction on your scroll wheel makes it catch fire. Case Study: Facebook.</p>
+
+<p>Facebook will always show you more. There are some handy links at the bottom of Facebook pages (like the developer links or the Help and Privacy links), but it&#8217;s unlikely that you&#8217;d ever see them for more than a split second. The feed is pushing interface elements out of the way. That&#8217;s a tad annoying. I mean, why even put them down there?</p>
+
+<p><a href="/images/articles/ajax_examples/Facebook.png"><img class="center" src="/images/articles/ajax_examples/Facebook.png" title="&#34;AJAX loading is pushing interface elements out of the way. That's a tad annoying.&#34;" alt="&#34;AJAX loading is pushing interface elements out of the way. That's a tad annoying.&#34;"></a></p>
+
+<h3><strong>MUST TRY HARDER, FACEBOOK.</strong></h3>
+
+<p>I&#8217;ve got one more positive example of sites that keep adding to pages: Myspace. The New Myspace features a radically reconstructed design, with one of the slickest web app UIs I have ever seen. I&#8217;m serious, I have never been remotely interested in Myspace until they unveiled the new design. My praise for it is worthy of another post, however.</p>
+
+<p>The horizontal layout of the new Myspace enables nicer persistent navigation elements than your standard sticky nav bars. While scrolling horizontally through social feeds, more items are loaded on the right, where there are no controls or even optionally accessible elements to shove out of the way. Myspace consolidated their important interface element in places that were always visible. Scroll as much as you like, that navigation box isn&#8217;t going anywhere. It always floats above other content and remains on the left.</p>
+
+<p><a href="/images/articles/ajax_examples/myspace.png"><img class="center" src="/images/articles/ajax_examples/myspace.png" title="&#34;Scroll as much as you like, that navigation box isn't going anywhere.&#34;" alt="&#34;Scroll as much as you like, that navigation box isn't going anywhere.&#34;"></a></p>
+
+<h3><strong>WAY TO BREAK THE MOLD, MYSPACE.</strong></h3>
+
+<p>To be fair, Facebook has been sticking their blue nav bar to the top for a long time. That does help navigate, but with less granularity and flexibility than Myspace&#8217;s collapsable vertical navigation lists.</p>
+
+<p>Lemme bring up another common AJAX loading annoyance, that being live streams of things. It&#8217;s sort of the inverted version of what I&#8217;ve been describing so far. Streaming updates are big in the social world, and pretty much every social site has them. But Tiwtter tightened the screws a bit for the sake of convenience and efficiency. Twitter just has the little &#8220;(n) new Tweets&#8221; button that you get to push to refresh your feed. I thought this should be common practice, but it has added purpose for Twitter users. If you&#8217;re following a lot of people, you might get a Tweet every five seconds. Hardly enough time to read them all before they get pushed out of the way by newer ones.</p>
+
+<p>So instead you get to read them at your leisure, load more, and read that new chunk of them. MUCH BETTER.</p>
+
+<p>Twitter gets it right because it helps wrangle the kind of data they present. Streams of tweets should be well-controlled. Adding AJAX loading without thought can cause frustrations if you deal with data that&#8217;s always trickling in. Like Twitter.</p>
+
+<p><a href="/images/articles/ajax_examples/Twitter.png"><img class="center" src="/images/articles/ajax_examples/Twitter.png" title="&#34;Control the flow and know how much new information is about to hit.&#34;" alt="&#34;Control the flow and know how much new information is about to hit.&#34;"></a></p>
+
+<h3><strong>SMART MOVE, TWITTER.</strong></h3>
+
+<p>I&#8217;ll do one more case study for a good implementation of streaming updates: Koding, a hip new social coding and developer network. Koding has an activity feed, a prominent one, where it encourages people to share code and ask questions, among other things. When you&#8217;ve got your scroll positioned at the very top a little Live Update toggle turns on. This means that as long as you&#8217;re right at the top of the list, it will auto-load updates. This is good. Scrolling down even a little, however, will toggle the feature off, so no more updates stream in live and shuffle around something you may be skimming over. It allows you to control the flow of data, and that data is what we want to consume at our own pace, right?</p>
+
+<p><a href="/images/articles/ajax_examples/Koding.png"><img class="center" src="/images/articles/ajax_examples/Koding.png" title="&#34;Being able to toggle AJAX loading helps a lot. Please do this more.&#34;" alt="&#34;Being able to toggle AJAX loading helps a lot. Please do this more.&#34;"></a></p>
+
+<h3><strong>GOOD ON YA, KODING.</strong></h3>
+
+<p>By the way, I&#8217;m working on a write-up of Koding, so that&#8217;ll give you a better idea of how everything fits together.</p>
+
+<p>One last case I&#8217;ll mention: Google.</p>
+
+<p>Google&#8217;s search results don&#8217;t auto-load. Web results, anyway. They&#8217;re still paginated the old-fashioned way. Why? Because AJAX loading is a feature that only a minuscule proportion of Googlers would ever need. How often does the proper result of a search come up on anything but the first page? For me, almost never. Google is confident enough to assume that you&#8217;ll almost never need to zip through long lists of results.</p>
+
+<p>By contrast, users of DuckDuckGo see that search results are auto-loaded as you scroll. This is because, while DDG is pretty good, its results tend to be less relevant than Google. People need to scroll more, so the site supports that behavior.</p>
+
+<p>C&#8217;mon, guys. It&#8217;s not actually that hard. Make the flow of data support the behavior of your users and the type of content you deliver. Sometimes, just don&#8217;t use it. Why is pagination so bad? What ever happened to getting to pick the number of results per page? Really, what was so terrible about that? I think we just got a little caught up with the ability to avoid page reloads.</p>
+
+<p><a href="/images/articles/ajax_examples/Google.png"><img class="center" src="/images/articles/ajax_examples/Google.png" title="&#34;Was pagination so terrible?&#34;" alt="&#34;Was pagination so terrible?&#34;"></a></p>
+
+<p>Seriously. Is this actually such a horrible thing? I doubt it.</p>
+</div>
+
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Armand Zerilli</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-31T23:17:00-04:00" pubdate data-updated="true">Mar 31<span>st</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/design/'>Design</a>, <a class='category' href='/blog/categories/irks-n-quirks/'>Irks 'n Quirks</a>, <a class='category' href='/blog/categories/ux/'>UX</a>, <a class='category' href='/blog/categories/web/'>Web</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.zerilliworks.net/blog/2013/03/31/ajax-loading-done-right/" data-via="zerilliworks" data-counturl="http://blog.zerilliworks.net/blog/2013/03/31/ajax-loading-done-right/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/28/im-here-for-the-evolution/" title="Previous Post: I'm Here for the Evolution">&laquo; I'm Here for the Evolution</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/31/ajax-loading-done-right/">AJAX Loading Done Right</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/28/im-here-for-the-evolution/">I'm Here for the Evolution</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/26/cry-me-a-river-emails/">Cry Me a River, Emails</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/17/complicated-or-other-kind-of-complicated/">Complicated or Other Kind of Complicated?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/16/why-octopress/">Why Octopress?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/09/preeow/">Preeow, Universe.</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("zerilliworks", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/zerilliworks" class="twitter-follow-button" data-show-count="false">Follow @zerilliworks</a>
+  
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:azerus">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "azerus"; //id target for pinboard list
+  var pinboard_count = 4; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/108980257566952977946?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+<section>
+<a href="http://www.adfreeblog.org/" target="_blank" style="text-decoration: none"> <img src="http://www.adfreeblog.org/adfreebutton2.jpg"></a>
+</section><section class="cc-license">
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nd/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">The Zerilliworks Blog</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://zerilliworks.net" property="cc:attributionName" rel="cc:attributionURL">Armand Zerilli</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/deed.en_US">Creative Commons Attribution-NoDerivs 3.0 Unported License</a>.
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Armand Zerilli -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  - <span class="credit">Hosted with <a href="http://pages.github.com">Github Pages</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zerilliworks';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.zerilliworks.net/blog/2013/03/31/ajax-loading-done-right/';
+        var disqus_url = 'http://blog.zerilliworks.net/blog/2013/03/31/ajax-loading-done-right/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '5144ae3d613f5d27df000081');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+</body>
+</html>
