@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Laravel | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/laravel/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-04-03T11:13:06-04:00</updated>
+  <updated>2013-04-03T11:22:38-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -105,7 +105,7 @@ return preg_replace("#\s*@progressbar\(\s*([0-9]*)\s*\)#", $html, $view);
 
 <h2>Functional Extensions</h2>
 
-<p>In this example, I'll use the Laravel Browser bundle to identify mobile users, and add some Blade extensions to change the rendering of templates for them.</p>
+<p>In this example, I'll use the <a href="http://bundles.laravel.com/bundle/Browser">Laravel Browser bundle</a> to identify mobile users, and add some Blade extensions to change the rendering of templates for them.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>routes.php </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -200,7 +200,7 @@ return preg_replace("#\s*@progressbar\(\s*([0-9]*)\s*\)#", $html, $view);
 </span><span class='line'><span class="x">&lt;p&gt;// Your regular routes</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>The first operation registers an instance of the Browser class in the IoC container. Browser is used to determine what user agent the client is running. In this case, it’s to distinguish users on desktop computers from users on phones and tablets. The IoC container handily keeps this instance ready for us. The code that follows registers the various Blade extensions with Laravel. There are four extensions illustrated here:</p>
+<p>The first operation registers an instance of the Browser class in the IoC container (<a href="http://laravel.com/docs/ioc">docs</a>). Browser is used to determine what user agent the client is running. In this case, it’s to distinguish users on desktop computers from users on phones and tablets. The IoC container handily keeps this instance ready for us. The code that follows registers the various Blade extensions with Laravel. There are four extensions illustrated here:</p>
 
 <ul>
 <li><code>@mobile</code></li>
