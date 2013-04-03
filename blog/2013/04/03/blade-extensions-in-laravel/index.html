@@ -1,24 +1,115 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Zerillian Engineering]]></title>
-  <link href="http://blog.zerilliworks.net/atom.xml" rel="self"/>
-  <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-04-03T11:13:06-04:00</updated>
-  <id>http://blog.zerilliworks.net/</id>
-  <author>
-    <name><![CDATA[Armand Zerilli]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Blade Extensions in Laravel - Zerillian Engineering</title>
+  <meta name="author" content="Armand Zerilli">
 
   
-  <entry>
-    <title type="html"><![CDATA[Blade Extensions in Laravel]]></title>
-    <link href="http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel/"/>
-    <updated>2013-04-03T10:42:00-04:00</updated>
-    <id>http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel</id>
-    <content type="html"><![CDATA[<p>This one took me a little while to figure out, since it’s not particularly well documented. In Laravel, it’s possible to extend the syntax of the Blade template language with your own statements. I heard it mentioned once, and found a few functions <a href="http://laravel.com/api/source-class-Laravel.Blade.html#75">in the API documentation</a> which led me to creating customized Blade statements.</p>
+  <meta name="description" content="This one took me a little while to figure out, since it’s not particularly well documented. In Laravel, it’s possible to extend the syntax of the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Zerillian Engineering" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Wire+One|Source+Code+Pro|Unica+One|Raleway|Titillium+Web" rel="stylesheet" type="text/css">
+
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32979394-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.zerilliworks.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+
+<ul class="main-navigation">
+  <li><a href="/"><img src="/images/logo.png"></a></li>
+  <li><a href="/blog">Blog</a></li>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Zerillian Engineering</a></h1>
+  
+    <h2>Software that doesn't want to kill you.</h2>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Blade Extensions in Laravel</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-03T10:42:00-04:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This one took me a little while to figure out, since it’s not particularly well documented. In Laravel, it’s possible to extend the syntax of the Blade template language with your own statements. I heard it mentioned once, and found a few functions <a href="http://laravel.com/api/source-class-Laravel.Blade.html#75">in the API documentation</a> which led me to creating customized Blade statements.</p>
 
 <!--more-->
 
@@ -88,7 +179,7 @@ return preg_replace("#\s*@progressbar\(\s*([0-9]*)\s*\)#", $html, $view);
 
 <p>We end up with this:</p>
 
-<p><img class="center" src="http://blog.zerilliworks.net/images/articles/blade-extensions-in-laravel/progressbars.png"></p>
+<p><img class="center" src="/images/articles/blade-extensions-in-laravel/progressbars.png"></p>
 
 <p>Now, we can use <code>@progressbar(XX%)</code> to specify a progress bar showing partial completion. It’s now possible to specify a percentage which the progress bar should represent. The closure extracts the number from our custom statement and uses it to set the CSS width property of the “meter” class element.</p>
 
@@ -552,394 +643,241 @@ return preg_replace("#\s*@progressbar\(\s*([0-9]*)\s*\)#", $html, $view);
 <p>There it is. I hope this helped you figure out Blade extensions. They&#8217;re really easy to use and can leverage the convenience and expression of Blade in specialized ways. You could even create a bundle that contains your favorite Blade extensions. All you&#8217;d have to do is register them in the bundle&#8217;s start.php file and tell Laravel to auto-load it. Easy as Sunday morning.</p>
 
 <p>Good luck, and happy coding.</p>
-]]></content>
-  </entry>
+</div>
+
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <entry>
-    <title type="html"><![CDATA[AJAX Loading Done Right (and Wrong)]]></title>
-    <link href="http://blog.zerilliworks.net/blog/2013/03/31/ajax-loading-done-right/"/>
-    <updated>2013-03-31T23:17:00-04:00</updated>
-    <id>http://blog.zerilliworks.net/blog/2013/03/31/ajax-loading-done-right</id>
-    <content type="html"><![CDATA[<p>Oh man. This really bothers me. Some of the time, it&#8217;s just not well-implemented. And when it is, I always appreciate it.</p>
 
-<p><em>Note: For non-technical people, AJAX loading is a term for what browsers do when they load more content without needing to load another page. A good example is Facebook news feeds. I&#8217;ll use it interchangeably with terms such as dynamic loading or auto loading.</em></p>
+<span class="byline author vcard">Posted by <span class="fn">Armand Zerilli</span></span>
 
-<p>A lot of websites just love to keep streaming content into your browser, sometimes as you&#8217;re scrolling along. Done properly, this is a useful annoyance-relieving tool. When botched, AJAX loading is an obtuse pain in the ass. In this post, I&#8217;ll look into mostly good implementations to show you the reasons these work pretty well. Usually.</p>
-
-<!-- more -->
+      
 
 
-<p>Let me provide a real-life analogy. Click/tap on any image in this article for a full-size version.</p>
 
-<p><a href="http://blog.zerilliworks.net/images/articles/hotel-doors/checkin_notice.jpg"><img src="http://blog.zerilliworks.net/images/articles/hotel-doors/checkin_notice.jpg"></a></p>
 
-<p>That&#8217;s an important notice about checkin times. Should probably read that. It&#8217;s just suction-cupped to the sliding doors. But I can&#8217;t quite read it from back here.</p>
 
-<p><a href="http://blog.zerilliworks.net/images/articles/hotel-doors/thats_convenient.jpg"><img class="left" src="http://blog.zerilliworks.net/images/articles/hotel-doors/thats_convenient.jpg"></a></p>
 
-<p>I could still go get up close and try to read it, but I tried and stood out of the way of the sensors and the doors closed again. This is basically no different from an improper implementation of dynamic content loading in social sites. So this is what I think of all that.</p>
 
-<p>Firstly, you&#8217;re in trouble if you think people always want to see more. I think it can be more intuitive. Assume people want to see <em>less</em> and that they will <em>ask</em> for more. Quick case study: Vimeo.</p>
 
-<p>When you log in to Vimeo, you&#8217;ll see a feed of videos added to the channels you follow in a nice little list there. It shows about ten items to start with. At the bottom, there&#8217;s a link that says &#8220;Load more videos&#8221;. Once you&#8217;ve clicked that, it turns on AJAX loading of more entries. Toggling auto loading AND limiting the information inflow? Atta boy.</p>
-
-<p><a href="http://blog.zerilliworks.net/images/articles/ajax_examples/Vimeo.png"><img class="center" src="http://blog.zerilliworks.net/images/articles/ajax_examples/Vimeo.png" title="&#34;Toggling auto loading AND limiting the information inflow? Atta boy.&#34;" alt="&#34;Toggling auto loading AND limiting the information inflow? Atta boy.&#34;"></a></p>
-
-<h3><strong>GOOD JOB, VIMEO.</strong></h3>
-
-<p>Try being conservative. I&#8217;ve heard a lot of complaints about these loading methods taking up too much space, but I don&#8217;t think anyone&#8217;s ever complained about <em>not</em> being flooded with information. Give us the choice, please.</p>
-
-<p>Sometimes, you can&#8217;t stop it. There&#8217;s no choice. You have to keep scrolling forever, until you run out of things to scroll by. Or your fingers fall off, or the friction on your scroll wheel makes it catch fire. Case Study: Facebook.</p>
-
-<p>Facebook will always show you more. There are some handy links at the bottom of Facebook pages (like the developer links or the Help and Privacy links), but it&#8217;s unlikely that you&#8217;d ever see them for more than a split second. The feed is pushing interface elements out of the way. That&#8217;s a tad annoying. I mean, why even put them down there?</p>
-
-<p><a href="http://blog.zerilliworks.net/images/articles/ajax_examples/Facebook.png"><img class="center" src="http://blog.zerilliworks.net/images/articles/ajax_examples/Facebook.png" title="&#34;AJAX loading is pushing interface elements out of the way. That's a tad annoying.&#34;" alt="&#34;AJAX loading is pushing interface elements out of the way. That's a tad annoying.&#34;"></a></p>
-
-<h3><strong>CLOSE BUT NO CIGAR, FACEBOOK.</strong></h3>
-
-<p>I&#8217;ve got one more positive example of sites that keep adding to pages: Myspace. The New Myspace features a radically reconstructed design, with one of the slickest web app UIs I have ever seen. I&#8217;m serious, I have never been remotely interested in Myspace until they unveiled the new design. My praise for it is worthy of another post, however.</p>
-
-<p>The horizontal layout of the new Myspace enables nicer persistent navigation elements than your standard sticky nav bars. While scrolling horizontally through social feeds, more items are loaded on the right, where there are no controls or even optionally accessible elements to shove out of the way. Myspace consolidated their important interface element in places that were always visible. Scroll as much as you like, that navigation box isn&#8217;t going anywhere. It always floats above other content and remains on the left.</p>
-
-<p><a href="http://blog.zerilliworks.net/images/articles/ajax_examples/myspace.png"><img class="center" src="http://blog.zerilliworks.net/images/articles/ajax_examples/myspace.png" title="&#34;Scroll as much as you like, that navigation box isn't going anywhere.&#34;" alt="&#34;Scroll as much as you like, that navigation box isn't going anywhere.&#34;"></a></p>
-
-<h3><strong>WAY TO BREAK THE MOLD, MYSPACE.</strong></h3>
-
-<p>To be fair, Facebook has been sticking their blue nav bar to the top for a long time. That does help navigate, but with less granularity and flexibility than Myspace&#8217;s collapsable vertical navigation lists.</p>
-
-<p>Lemme bring up another common AJAX loading annoyance, that being live streams of things. It&#8217;s sort of the inverted version of what I&#8217;ve been describing so far. Streaming updates are big in the social world, and pretty much every social site has them. But Tiwtter tightened the screws a bit for the sake of convenience and efficiency. Twitter just has the little &#8220;(n) new Tweets&#8221; button that you get to push to refresh your feed. I thought this should be common practice, but it has added purpose for Twitter users. If you&#8217;re following a lot of people, you might get a Tweet every five seconds. Hardly enough time to read them all before they get pushed out of the way by newer ones.</p>
-
-<p>So instead you get to read them at your leisure, load more, and read that new chunk of them. MUCH BETTER.</p>
-
-<p>Twitter gets it right because it helps wrangle the kind of data they present. Streams of tweets should be well-controlled. Adding AJAX loading without thought can cause frustrations if you deal with data that&#8217;s always trickling in. Like Twitter.</p>
-
-<p><a href="http://blog.zerilliworks.net/images/articles/ajax_examples/Twitter.png"><img class="center" src="http://blog.zerilliworks.net/images/articles/ajax_examples/Twitter.png" title="&#34;Control the flow and know how much new information is about to hit.&#34;" alt="&#34;Control the flow and know how much new information is about to hit.&#34;"></a></p>
-
-<h3><strong>SMART MOVE, TWITTER.</strong></h3>
-
-<p>I&#8217;ll do one more case study for a good implementation of streaming updates: Koding, a hip new social coding and developer network. Koding has an activity feed, a prominent one, where it encourages people to share code and ask questions, among other things. When you&#8217;ve got your scroll positioned at the very top a little Live Update toggle turns on. This means that as long as you&#8217;re right at the top of the list, it will auto-load updates. This is good. Scrolling down even a little, however, will toggle the feature off, so no more updates stream in live and shuffle around something you may be skimming over. It allows you to control the flow of data, and that data is what we want to consume at our own pace, right?</p>
-
-<p><a href="http://blog.zerilliworks.net/images/articles/ajax_examples/Koding.png"><img class="center" src="http://blog.zerilliworks.net/images/articles/ajax_examples/Koding.png" title="&#34;Being able to toggle AJAX loading helps a lot. Please do this more.&#34;" alt="&#34;Being able to toggle AJAX loading helps a lot. Please do this more.&#34;"></a></p>
-
-<h3><strong>GOOD ON YA, KODING.</strong></h3>
-
-<p>By the way, I&#8217;m working on a write-up of Koding, so that&#8217;ll give you a better idea of how everything fits together.</p>
-
-<p>How about some bad reasons to use it? It certainly depends on the nature of the content you provide. Social sites love it because data is always coming in, and they can&#8217;t be certain of how much you&#8217;ve seen and what you&#8217;ve missed. So why not let you keep rolling until you&#8217;ve had your fill? Sensible enough. I picked at Facebook because they still had a footer. Seriously, they are mutually exclusive. Why even have something that just gets bumped all the time?</p>
-
-<p>It also puts a burden on the client. The browser is in charge of managing everything, and if you leave Facebook open for a long time, you might find your browser getting a bit sluggish. It adds a lot of complexity for sometimes marginal gain.</p>
-
-<p>If you&#8217;re not careful, it can also break the flow of a reader&#8217;s traversal through information. Most AJAX-loading sites don&#8217;t pick up where you left off if you click a link and go back. If your site has you jumping in and out of links, like on an infinite-scrolling tumblr blog, it can break. You get capped at the initial end of the page as the browser tries to scroll back down to where you were.</p>
-
-<p>Auto-loading blog posts is typically bad practice, so I think.</p>
-
-<p>Another worry is making your content grey. Generic and blended together. Nondistinct. Pinterest suffers this, and <a href="http://mcfunley.com/design-for-continuous-experimentation">so did Etsy for a while</a> (skip to slide 25.) Infinite scrolling establishes <em>momentum</em>, meaning users get rolling and look at each piece of data for a fraction of a second. It&#8217;s hard to tell stuff apart. It&#8217;s possible to fly by thousands of items and really only see a handful. It encourages haste, and that leads to minimal engagement.</p>
-
-<p>If your implementation of infinite scrolling pushes away interface elements, fuses elements into a blur of unremarkability, or breaks a clean traversal of references and links, you might need to re-think it. Essentially, support your data and the behavior of your users.</p>
-
-<p>One last case I&#8217;ll mention: Google.</p>
-
-<p>Google&#8217;s search results don&#8217;t auto-load. Web results, anyway. They&#8217;re still paginated the old-fashioned way. Why? Because AJAX loading is a feature that only a minuscule proportion of Googlers would ever need. How often does the proper result of a search come up on anything but the first page? For me, almost never. Google is confident enough to assume that you&#8217;ll almost never need to zip through long lists of results.</p>
-
-<p>By contrast, users of DuckDuckGo see that search results are auto-loaded as you scroll. This is because, while DDG is pretty good, its results tend to be less relevant than Google. People need to scroll more, so the site supports that behavior.</p>
-
-<p>C&#8217;mon, guys. It&#8217;s not actually that hard. Make the flow of data support the behavior of your users and the type of content you deliver. Sometimes, just don&#8217;t use it. Why is pagination so bad? What ever happened to getting to pick the number of results per page? Really, what was so terrible about that? I think we just got a little caught up with the ability to avoid page reloads.</p>
-
-<p><a href="http://blog.zerilliworks.net/images/articles/ajax_examples/Google.png"><img class="center" src="http://blog.zerilliworks.net/images/articles/ajax_examples/Google.png" title="&#34;Was pagination so terrible?&#34;" alt="&#34;Was pagination so terrible?&#34;"></a></p>
-
-<p>Seriously. Is this actually such a horrible thing? I doubt it.</p>
-]]></content>
-  </entry>
   
-  <entry>
-    <title type="html"><![CDATA[I'm Here for the Evolution]]></title>
-    <link href="http://blog.zerilliworks.net/blog/2013/03/28/im-here-for-the-evolution/"/>
-    <updated>2013-03-28T04:47:00-04:00</updated>
-    <id>http://blog.zerilliworks.net/blog/2013/03/28/im-here-for-the-evolution</id>
-    <content type="html"><![CDATA[<p>I never really addressed this, so I&#8217;ll do it now. I&#8217;ve been programming as an amateur for a long time. I&#8217;m almost 20, and it&#8217;s really grown into my primary focus over the last few years. I&#8217;d like to share what led up to the starting of this blog. It&#8217;s only a part of a big change for me.</p>
-
-<!-- more -->
 
 
-<h2>It started with a startup.</h2>
+<time datetime="2013-04-03T10:42:00-04:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
+      
 
-<p>Early last year, I began working for a startup company here in Ithaca. A bright and clever young team with a great idea and unstoppable motivation. We were little guys trying to launch a new film distribution company. For other little guys, too: Independent filmmakers.</p>
-
-<p>It was a business forged from passion. We were all film buffs and attended film school, which means we had all seen some gems get passed over and lost in even niche film interest groups. Seriously, high-caliber films made by incredibly smart people. We couldn&#8217;t believe they weren&#8217;t more popular. We watched every film we acquired, and movie night came right after every meeting.</p>
-
-<p><span class='pullquote-right' data-pullquote='It was absolutely thrilling.'>
-I was their only software developer. We were just getting started, and funding was still iffy, but we worked tirelessly. I was given complete control over the technology, and I had never had such a big responsibility. It was absolutely thrilling. If I wanted to ship a new feature, I didn&#8217;t ask anybody. As long as I kept my priorities straight, I could implement whatever I wanted. They trusted me with their website, and I took good care of it.
-</span></p>
-
-<p>We continued acquiring films and building features and spreading the word. We actually landed some award-winning short films in the beginning, personally vetted by each of us. We went to Tribeca and interviewed with startup incubators. This was a startup in every sense of the word, and that was totally new to me. It was beyond exciting.</p>
-
-<p><span class='pullquote-right' data-pullquote='I still get poignant flashbacks when I say that things turned sour.'>
-I still get poignant flashbacks when I say that things turned sour. I was literally losing my mind from the stress and we began to shed some connections from circumstances beyond our control. I snapped after a heated exchange with my partners wherein I learned we severely differed on some core principles, which I felt morally opposed to. Things started to get fishy, and I had to leave. Not only was my health degrading, but I discovered a shocking truth that day. These were good people, but the chemistry turned out to be completely wrong. After parting ways, everything fell apart. The company made a failed attempt at crowd-sourced funding and garnered only lukewarm reception in a film festival partnership. Sometimes I felt like I let a lot of people down. I felt like the biggest failure imaginable. I had never been more lost or embarrassed.
-</span></p>
-
-<p>All things considered, it was actually a burnout waiting to happen. I couldn&#8217;t have kept that work up. No one could for long. We weren&#8217;t doing it quite right. It felt like a part of me died when the company crumbled, and it still bothers me to this day.</p>
-
-<p>I lapsed into seclusion. I kept programming, but I did it behind closed doors. I continued to teach myself as I typically did, but there was always something nagging me with every method I wrote. Something that told me I should be ashamed of what I was doing, that somehow it wasn&#8217;t good enough. It was so bad some days that I would start up my IDE and stare at the new project wizard for a minute before quitting it and watching television. I was afraid to even start something.</p>
-
-<p>The failure of that startup really got to me. I may not have invested much more than time, but it hurt a lot. I didn&#8217;t consult with anybody. And sometimes I lied about it. That nagging voice telling me I wasn&#8217;t perfect degraded the quality of my work. I let things slide because I was always doubting myself. I tried again and again to produce marketable ideas, but just couldn&#8217;t make them work. I felt dead-ended. I have struggled with depression before, and it made a strong resurgence during this period. I had never felt lower.</p>
-
-<p><span class='pullquote-right' data-pullquote='As it turns out, every problem I faced could somehow or another be traced back to my isolated nature.'>
-Around Christmas last year, things finally started to change. I produced a solid idea, one that I found useful and relevant, something I was compelled to work on. I kept hitting some roadblocks, which prompted me to do a little thinking about what was sticking its thorns in me. As it turns out, every problem I faced could somehow or another be traced back to my isolated nature.
-</span></p>
-
-<p>I had been social, of course, but my work was secret. I was afraid of sharing anything. I realized that had to change.</p>
-
-<p>I perused forums, I signed up for mailing lists and message boards. I signed up for Github and put up a repository of my own. Even though that repository was pretty worthless, it was a symbolic step for me. <a href="http://blog.zerilliworks.net/projects/shadowcv">That project was one of my first</a>, and now there is nothing to hide about it. I hadn&#8217;t been very open before, so I&#8217;m taking more steps now. I&#8217;ve also netted myself an account with a hip new programmer&#8217;s network called <a href="http://koding.com">Koding.</a> I&#8217;m asking questions and seeking advice. I really want to be the best programmer I can, and I know that&#8217;s impossible if I stay in my bubble. No matter how good I get at Trivial Pursuit while I&#8217;m here.</p>
-
-<p>This blog may be unremarkable on the scale of the Internet, but it is <em>huge</em> for me. Maybe my ideas really are unique and interesting. Maybe I&#8217;ll make a connection to someone that kicks my ass and changes the way I think forever. And what if by letting go of my comforting solitude I flourish enough to create the systems I dream about? I would be crazy ignore these possibilities.</p>
-
-<p>The people that know me personally might find me socially capable and outgoing. In many cases that&#8217;s true. But professionally and with my work, I never talked to anyone seriously. I had chats about what I do, but I couldn&#8217;t connect. I am hoping that changes.</p>
-
-<p><span class='pullquote-right' data-pullquote='I don&#8217;t want to cover up my weaknesses anymore.'>
-So here I am. I&#8217;ve accepted my past shortcomings and I&#8217;m playing to my strengths. I don&#8217;t want to cover up my weaknesses anymore. I want to bring them into the light and be realistic about them. If I can fill in these weaknesses, I will. Even if I can&#8217;t, I&#8217;ll gain insight into the ways I can best support my work and the work of those I collaborate with.
-</span></p>
-
-<p>As I say often, all I&#8217;ve ever wanted to do is help people, and that means accepting help when I need it.</p>
-
-<p>I am beyond grateful for any advice I get through the things I write and I can&#8217;t be appreciative enough of the time anyone spends helping me. I realize now that we&#8217;re all in this together, and being a vigilante was crippling me. I need to embrace the world, and I&#8217;ve been truly inspired by a lot of really smart programmers and genuine technologists who are all looking to improve the world around them. I&#8217;ve probably sent you emails at some point or another, you know who you are. Thank you. Truly.</p>
-
-<p>That&#8217;s why I do this. I want to learn. I do this for me right now, but I hope that it may help others and eventually become a channel through which I can return the favors I&#8217;ve been granted.</p>
-
-<h2>Hello, world. I&#8217;m Armand. And I&#8217;m here to evolve.</h2>
-]]></content>
-  </entry>
+<span class="categories">
   
-  <entry>
-    <title type="html"><![CDATA[Cry Me a River, Emails]]></title>
-    <link href="http://blog.zerilliworks.net/blog/2013/03/26/cry-me-a-river-emails/"/>
-    <updated>2013-03-26T00:59:00-04:00</updated>
-    <id>http://blog.zerilliworks.net/blog/2013/03/26/cry-me-a-river-emails</id>
-    <content type="html"><![CDATA[<h3>Or: Why You Should NEVER Make Robots Fake Sincerity</h3>
-
-<p>While helping a friend construct a website, I signed up for Weebly. I didn&#8217;t even have a website, I was just a collaborator. I didn&#8217;t want anything to do with Weebly. For some reason, she began getting uncomfortably clingy. Look at this as an example of how to creep out your customers.</p>
-
-<!-- more -->
-
-
-<p>I&#8217;ll be clear now that I do not like drag-and-drop site builders. Only one such service have I ever described in terms that may be optimistically construed as &#8220;fond&#8221; &#8211; that service being Squarespace. And that&#8217;s only because they opened up their internals to developers.</p>
-
-<p>So have a look at this.</p>
-
-<p><img src="http://blog.zerilliworks.net/images/articles/Weebly-Believing.png" title="Don't stop believin' (in your website)" ></p>
-
-<p><a href="http://blog.zerilliworks.net/extras/weebly-believing.html/">If you can&#8217;t see the image, click here for the text version.</a></p>
-
-<p>The time since I signed up is probably the second worst thing about this. It&#8217;s just odd. It reminds me that there is some task somewhere (clearly not a human) that is looking over less-than-frequently-active accounts and telling them to get going. It&#8217;s unbelievably insincere, and it&#8217;s frankly a little condescending. How so?</p>
-
-<blockquote><p>Maybe you got busy and forgot about your website. We understand. When you signed up you probably had a vision for your site. We want to help you make that a reality. We promise that Weebly truly is the easiest way to create a website.</p></blockquote>
-
-<p>Of course I had a vision. Perhaps I own a business, I sell goods, I&#8217;m an artist, I&#8217;m a traveller, I&#8217;m a game show contestant with a penchant for blogging. What&#8217;s gonna matter is my content. If I&#8217;m passionate enough, I&#8217;ll find the best way to present it. I am disinclined to believe that anyone who has any real desire to run a website would forget about it for 29 days, 16 hours, 7 minutes and 47 seconds.</p>
-
-<p>This helpful message is a little too chummy. It is certainly not sincerely endorsed by the Weebly Team, it was sent by a robot that&#8217;s been told how to sound friendly. A person wrote generic text without much thought and I was on the receiving end of a template engine fed with those words. Nothing really makes me feel less cared for than robots acting like people. Giving them a little personality can be okay, but this is kind of insulting. Is your team actually nervous that I might not realize the full potential of my business? That&#8217;s something investors worry about. And something robots think nothing of.</p>
-
-<p>Then this happens:</p>
-
-<p><img src="http://blog.zerilliworks.net/images/articles/Weebly-Sniffle.png" title="Sniffle. Sniffle..." ></p>
-
-<p><a href="http://blog.zerilliworks.net/extras/weebly-sniffle.html/">If you can&#8217;t see the image, click here for the text version.</a></p>
-
-<p>The subject of this message was literally &#8220;That&#8217;s sad.&#8221; No, this email is the sad thing. You trained machines to sound sympathetic, and it&#8217;s just unsettling to make them cry. <em>For the love of God, knock it off.</em> There&#8217;s nothing wrong with the concept of automated messages. But <em>please</em> do not make them f&#8211;king cry. That does not make me feel cared for. Your team doesn&#8217;t seem to be there for me, it seems like you need to clutch your flaky customers in a death grip.</p>
-
-<p>Don&#8217;t fret though, you fantastically sincere liars, I think this email could be fixed pretty easily.</p>
-
-<p><img src="http://blog.zerilliworks.net/images/articles/Weebly-Sniffle-fixed.png" title="Just take a Sharpie to it." ></p>
-
-<p>There. That&#8217;s basically free advice, Weebly. If your team is feeling sincere and nervous and sympathetic, my typical consulting fee is $17,000.</p>
-
-<p>For the record, one of their founders eventually sent me a personal email asking for feedback. Way to go, fellas. That&#8217;s where you lay on the charm, in the actual exchanges between actual people. That redeemed their support team a bit. That was someone who was really wondering what went wrong and wanted to find a solution. I&#8217;m not being sarcastic there, if you&#8217;re looking to connect with a customer, a real live human being is the way to do it. I absolutely love that.</p>
-
-<p>Sending automated emails that cry is tantamount to deception. That&#8217;s what I have to say to them.</p>
-
-<p>I can&#8217;t be the only person that feels this way. I very highly value genuine interactions, and pretty much any attempt to imbue emotion without real effort is simply insulting to me.</p>
-
-<p>Seriously, without the mendacious nervousness and sniffles, these would be just helpful emails. I might have read them without rolling my eyes.</p>
-
-<p>If you&#8217;re someone who also dislikes this sort of indiscretion, I&#8217;d appreciate a comment so I know I&#8217;m not alone.</p>
-
-<p>Also, if you happen to be an English professor and would like to tell me whether I should have used <em>whom</em> in that last sentence, I would appreciate it.</p>
-]]></content>
-  </entry>
+    <a class='category' href='/blog/categories/how-to/'>How-To</a>, <a class='category' href='/blog/categories/laravel/'>Laravel</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/software/'>Software</a>, <a class='category' href='/blog/categories/web/'>Web</a>
   
-  <entry>
-    <title type="html"><![CDATA[Complicated or Other Kind of Complicated?]]></title>
-    <link href="http://blog.zerilliworks.net/blog/2013/03/17/complicated-or-other-kind-of-complicated/"/>
-    <updated>2013-03-17T03:01:00-04:00</updated>
-    <id>http://blog.zerilliworks.net/blog/2013/03/17/complicated-or-other-kind-of-complicated</id>
-    <content type="html"><![CDATA[<p>I make a lot of choices while working on a project, mostly a large collection of tiny architectural choices that will impact how I build my applications. The words  <em>simple</em> and <em>complicated</em>, I&#8217;ve found, are very deceptive blanket statements. Sometimes, I have to trade off different kinds of complexity that add upp to the greatest efficiency versus smallest amount of frustration.</p>
-
-<!-- more -->
+</span>
 
 
-<h2>Sometimes You Can&#8217;t Win.</h2>
-
-<p>There are so many different ideas about the easiest/best/fastest/simplest way to do things. Seems like everyone&#8217;s got a philosophy. <strong>NOW, THERE IS NOTHING INHERENTLY WRONG WITH THAT.</strong> I&#8217;ve got my own little bubble of philosophy I like to stick to. The unfortunate part is that there is a pretty wide spectrum of impresicse language that <a href="http://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Words_to_watch#Puffery">attribute ambiguous meaning to ideas without much factual support.</a></p>
-
-<p>I&#8217;ll give an example. I&#8217;m laying out all the bits and pieces of a medical app right now, and I&#8217;m at the pivotal point of getting to pick what language and framework I&#8217;ll be using. I&#8217;ve surveyed a bunch of web technologies to choose the best <em>(with &#8220;best&#8221; being a relative term).</em></p>
-
-<p>Everybody wants simplicity, but be aware what you may be trading it for. In my case, I&#8217;m choosing between PHP with the <a href="http://laravel.com/">Laravel</a> framework or Ruby on Rails. Familiarity is the big discrepancy. Both parties have proponents and those who preach the beautiful elegance of their respective platform. But PHP is at heart an icky language and I know little about serious use of Ruby at this point. <strong>DAMN.</strong></p>
-
-<p>And when they dangle s&#8211;t like this in front of you:</p>
-
-<p><img src="http://blog.zerilliworks.net/images/articles/rails.png" alt="Ruby on Rails homepage banner" /></p>
-
-<p><strong>WHO COULD POSSIBLY RESIST?</strong></p>
-
-<p>Tread lightly, Armand. Don&#8217;t get caught up in the sparkling beauty of these systems. Remember that something&#8217;s gotta give and to barter for the kind of complexity you can handle best.</p>
-
-<p>I know PHP and Laravel very well, meaning I could get straight to work building the app. Rails seems super slick, though I admittedly know little about it. I&#8217;d have to learn everything while I work. As I mentioned in <a href="http://blog.zerilliworks.net/blog/2013/03/09/preeow/">my introductory post</a>, I love learning, but I take my sweet time to get the in-depth understanding I desire.</p>
-
-<p>I get easily flustered when I begin to subscribe to everyone&#8217;s callouts regarding the streamlined versus the intricate. Not all complications have to be crippling, but be sure to pick them carefully. Until we start writing our apps with LOVE (<a href="http://worldofgoo.wikia.com/wiki/MOM"><em>a new scripting language where you write applications using &#8216;feelings&#8217;</em></a>) I believe these sorts of choices will continue to thornily remind us of their irksomeness.</p>
-
-<p>Pick your manifold code-wads with care.</p>
-]]></content>
-  </entry>
+    </p>
+    
+      <div class="sharing">
   
-  <entry>
-    <title type="html"><![CDATA[Why Octopress?]]></title>
-    <link href="http://blog.zerilliworks.net/blog/2013/03/16/why-octopress/"/>
-    <updated>2013-03-16T14:40:00-04:00</updated>
-    <id>http://blog.zerilliworks.net/blog/2013/03/16/why-octopress</id>
-    <content type="html"><![CDATA[<p>I could have just tossed a WordPress installation up somewhere. It probably would have taken less time
-to set up. But I&#8217;m not a big fan of WordPress. I&#8217;m not a big fan of anything that needs extra plugins to
-be reasonably secure. I like fast and simple. AND NOW HERE I AM.</p>
-
-<!-- more -->
-
-
-<p>Any seasoned (or even soft-boiled) developer realizes the potential of the terminal. I&#8217;m not an average
-web user. I shouldn&#8217;t have to learn the lingo of the CMS du-jour. if I want to build a good site or blog. I
-should be able to use basically three skills: Git, Markdown, and the terminal. No dicking through page
-after page of backend material. I already know these things, and they have proven themselves as my most
-enjoyable tools to use.</p>
-
-<p>I also wanted this blog to be fast. Software like WordPress, Movable Type, MojoMotor, Drupal&#8230; They&#8217;re
-burdened with significant overhead of processing and delivering pages. Some have plugins to help, but
-I think that we shouldn&#8217;t even need them. Why would you ship a slow product and have third parties make
-it safe and efficient? Seems like skipping a step.&dagger;</p>
-
-<p>I don&#8217;t want to pick on WordPress too much. Automattic is a neat company and deserves respect for making
-blogging and site creation so accessible. For me, it became less efficient once I &#8220;knew better.&#8221;</p>
-
-<p>So here I am working with Octopress. I get to tap out Markdown without needing a web-based WYSIWYG editor
-and type a command to send everything up to the free Github Pages service. This blog is what I&#8217;d call
-&#8220;TV Magic.&#8221; Like on cooking shows. All of the same things happen here that would happen on a dynamic
-site, just done beforehand so they come out quick. Similar to the ways Emeril Lagasse has his roasts
-roasting an hour before the show. Just when they&#8217;re ready, it&#8217;s <em>Bam</em> and we have dinner.</p>
-
-<p>Octopress is wonderful software, and definite props to Brandon Mathis for his work making Jekyll friendly.
-Good sir, you&#8217;re the only reason I actually had enough fun putting up a blog to&#8230; Well, put up a blog.</p>
-
-<p><a href="http://octopress.org">Octopress - A blogging framework for hackers</a></p>
-
-<p>At the end of the day, roasting my roasts in advance means low overhead, faster requests, and simple
-hosting. I&#8217;m a PHP programmer for sure, and I know there are things PHP and its derivative frameworks
-are good at.</p>
-
-<p>Simple blogging just isn&#8217;t putting PHP&#8217;s best foot forward.</p>
-
-<p>&dagger; <em>Yeah, ORACLE.</em></p>
-
-<p><em>Note: Edited for spelling/grammar on March 21, 2013</em></p>
-]]></content>
-  </entry>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel/" data-via="zerilliworks" data-counturl="http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel/" >Tweet</a>
   
-  <entry>
-    <title type="html"><![CDATA[Preeow, Universe.]]></title>
-    <link href="http://blog.zerilliworks.net/blog/2013/03/09/preeow/"/>
-    <updated>2013-03-09T02:23:00-05:00</updated>
-    <id>http://blog.zerilliworks.net/blog/2013/03/09/preeow</id>
-    <content type="html"><![CDATA[<p>I&#8217;ve heard that one of the big things that separates mediocre programmers from
-good ones is blog writing. Participation in the open source scene is huge as well,
-but getting people to listen to you is eye-opening and empowering. At least, I feel
-that it is. Sharing of information is what makes the Web remarkable. If I have
-things to contribute, I think I should get them out there.</p>
-
-<!--more-->
-
-
-<h2>Allow Me to Introduce Myself.</h2>
-
-<p><em>My name is Armand.</em> I&#8217;m a quirky round-faced ball of enthusiasm and big time
-programming enthusiast. I&#8217;ve been writing code for the better part of my life, in
-some form or another. I decided to make Web programming my specialty after I taught
-myself PHP and witnessed the power I immediately channeled with just a text editor.</p>
-
-<p>All I&#8217;ve ever really wanted to do is help people, and creating systems for the Web
-fascinates me. I may have the opportunity to share what I have to offer with a lot
-of people. It&#8217;s a much larger scale than fixing computers, which I always thought
-was a pain in the ass.</p>
-
-<p>My old boss told the old joke,</p>
-
-<blockquote><p>How many programmers does it take to screw in a lightbulb? None, that&#8217;s a hardware problem!</p></blockquote>
-
-<p>Oh, how we laughed.</p>
-
-<p>So in the same ways I&#8217;ve taken on a DIY attitude, I&#8217;ve taught myself everything I
-know about these electric beasts. They are deeply fascinating to me. I&#8217;ve seen more
-than a handful of bright-eyed young programmers showcase what I call hollow talent.
-It&#8217;s similar to how you might bulls&#8211;t someone you&#8217;re talking to such that you
-appear to be informed about the topic at hand. Sadly, a lot of this fresh talent is
-built on looking up into higher constructs while not understanding the activity
-that drives them.</p>
-
-<p>My first programming experience came while learning about robotics in a summer-camp
-sort of program. I was just about twelve, and we had a lot to play with. They had
-those nifty Lego robitcs sets, sure. But the real pleasure was working with a real
-machine; the <em>Parallax BASIC Stamp</em> was the first real computer I&#8217;ve ever bossed
-around.</p>
-
-<p>On a microcontroller, you don&#8217;t get any help. There are functions and implementations
-that keep your hardware afloat, and that&#8217;s it. No standard
-libraries. All you have is math and memory access, essentially. That was my boot
-camp.</p>
-
-<p>I learned to have fun with the BASIC Stamp, simple as they were. Most of it was
-the fact that transferring a program to the little EEPROM on these robots would
-immediately bring them to life. I&#8217;d get to tweak and test continually, and it was
-endlessly entertaining. This is probably where I established by preferred development
-paradigm: Test-driven development.</p>
-
-<p>I taught myself about the implementation of many simple algorithms, since there was
-no hand-holding in PBASIC (Parallax&#8217;s extension of BASIC adding microcontroller-specific
-constructs). Step by step, I built up core computer science knowledge, almost
-without knowing it. All that really mattered was that I was getting to do new things
-with what I learned. Learning enabled a unique kind of excitement for me, and I
-never lost the desire to learn. The self-teaching process, though frustrating at
-times, is still the activity I find most rewarding.</p>
-
-<p>I kept it rolling, picking up C++ while I worked with openFrameworks (which was unbelievably
-fun) and later PHP, where I got my foundation in web programming. HTML, CSS, JavaScript&#8230;
-They all came along with it. And now I&#8217;m further pushing my boundaries in the web with
-languages like Ruby and Erlang. I was never much a fan of Python, but to be fair I never
-gave it a thorough try.</p>
-
-<p>And these all just barely scratch the surface. I have so much more to illuminate.</p>
-
-<p>I tend not to think in absolutes. There are some issues that polarize me, but I&#8217;ve
-always been a rather open-minded individual. I contrast this to a majority of tech
-bloggers whom are opinionated, stubborn, and elitist. I&#8217;ll admit that these are
-sometimes positions that are easy to settle into, which is perhaps why people become
-such binary thinkers with little awareness to the fact.</p>
-
-<p>There is so much to experience in the world of technology, that I&#8217;ve found it far
-more enjoyable to explore and absorb new ideas. Odd as this may sound, I try to never
-think that I&#8217;m doing something right. It doesn&#8217;t mean I think I&#8217;m wrong. It means I
-don&#8217;t hold my methods as perfect or authorotative. There&#8217;s often a better way to do
-things. Even if I&#8217;m solving a problem to the best of my ability or in the best
-possible way, I like to remain aware of and receptive to concepts carried in on the
-intermittent gusts of fresh air.</p>
-
-<p>All of this experience and philosophy culminates in my overarching life goal: To be helpful.
-A lot of people have a lot of problems, and somehow I plan on solving at least one of them.</p>
-
-<p>This is me. And I can be very helpful.</p>
-]]></content>
-  </entry>
   
-</feed>
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/31/ajax-loading-done-right/" title="Previous Post: AJAX Loading Done Right (and Wrong)">&laquo; AJAX Loading Done Right (and Wrong)</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/03/blade-extensions-in-laravel/">Blade Extensions in Laravel</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/31/ajax-loading-done-right/">AJAX Loading Done Right (and Wrong)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/28/im-here-for-the-evolution/">I'm Here for the Evolution</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/26/cry-me-a-river-emails/">Cry Me a River, Emails</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/17/complicated-or-other-kind-of-complicated/">Complicated or Other Kind of Complicated?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/16/why-octopress/">Why Octopress?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/09/preeow/">Preeow, Universe.</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("zerilliworks", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/zerilliworks" class="twitter-follow-button" data-show-count="false">Follow @zerilliworks</a>
+  
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:azerus">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "azerus"; //id target for pinboard list
+  var pinboard_count = 4; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/108980257566952977946?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+<section>
+<a href="http://www.adfreeblog.org/" target="_blank" style="text-decoration: none"> <img src="http://www.adfreeblog.org/adfreebutton2.jpg"></a>
+</section><section class="cc-license">
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nd/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">The Zerilliworks Blog</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://zerilliworks.net" property="cc:attributionName" rel="cc:attributionURL">Armand Zerilli</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/deed.en_US">Creative Commons Attribution-NoDerivs 3.0 Unported License</a>.
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Armand Zerilli -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  - <span class="credit">Hosted with <a href="http://pages.github.com">Github Pages</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zerilliworks';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel/';
+        var disqus_url = 'http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '5144ae3d613f5d27df000081');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+</body>
+</html>
