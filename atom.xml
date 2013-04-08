@@ -4,7 +4,7 @@
   <title><![CDATA[Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-04-03T11:22:38-04:00</updated>
+  <updated>2013-04-08T18:28:15-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Excess Verbosity]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/04/08/excess-verbosity/"/>
+    <updated>2013-04-08T15:17:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/04/08/excess-verbosity</id>
+    <content type="html"><![CDATA[<p>I have a tendency toward verbosity. I&#8217;m a really wordy person. TOO WORDY, IN FACT.</p>
+
+<p>I think the reason I do it stems from a fear that my ideas won&#8217;t get through to people. I used to have to explain things to non-technical people, and sometimes that made my brain go around in circles attempting to come up with the right words. I got rather accustomed to stringing words together that had to adjust previous words with more detail, supposedly assuring that I wasn&#8217;t misunderstood. By the way, there&#8217;s one word for that paragraph: <em>Pleonasm.</em></p>
+
+<p>Mostly it just confused people, so something had to give.</p>
+
+<!-- more -->
+
+
+<p>I wrote some emails recently, and boy were they motormouthed, perhaps <em>incongruously</em> so. I mean, I&#8217;ve got a little OS X launcher utility that can do thesaurus lookups. It&#8217;s been getting more use lately.</p>
+
+<p>I also have friends that like to edit their writing only as they write it. Those works tend to be quite <em>tautological.</em> The fault is a lack of a unifying <em>cynosure</em>. My emails tend to be like that, unfortunately. Conversational tones give a <em>congenial</em> feel to these communications, but I think I&#8217;ve overdone it.</p>
+
+<p>See? A little refined vocabulary cuts away superfluity. I&#8217;ve learned to work that thesaurus and boil down sentences to core meaning, finding out if I&#8217;ve repeated things too often. It&#8217;s a rule now.</p>
+
+<p>For others with <em>circuitous</em> writing issues, it&#8217;s a good idea to keep a dictionary app open all the time. Or, if you&#8217;re the type that&#8217;s very grounded in the tangible world, a pocket thesaurus. If you&#8217;re a Mac user, you&#8217;ve already got Dictionary.app and built-in word lookups basically everywhere.</p>
+
+<p>This whole <em>less is more</em> thing works in surprising places. And remember that people love to work with strong writers. Make the most of your paragraphs.</p>
+
+<p>That, and when you use sophisticated vocabulary, you&#8217;re giving the reader an opportunity for a nice little educational experience. Who doesn&#8217;t like learning new words?</p>
+
+<p>Everybody wins.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Blade Extensions in Laravel]]></title>
