@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Making Progress | Zerillian Engineering]]></title>
+  <link href="http://blog.zerilliworks.net/blog/categories/making-progress/atom.xml" rel="self"/>
+  <link href="http://blog.zerilliworks.net/"/>
+  <updated>2013-04-21T00:55:49-04:00</updated>
+  <id>http://blog.zerilliworks.net/</id>
+  <author>
+    <name><![CDATA[Armand Zerilli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Connect Yourself to the World]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/04/21/connect-yourself-to-the-world/"/>
+    <updated>2013-04-21T00:04:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/04/21/connect-yourself-to-the-world</id>
+    <content type="html"><![CDATA[<p>A few days ago, I was lucky enough to attend a gathering of some local web developers and software artisans. I've <a href="/blog/2013/03/28/im-here-for-the-evolution/">previously documented</a> my loneliness and the degree to which it afflicted me, so this was a welcome event. Just a few hours with intelligent like-minded people really kicked my ass. It was a time when I could tell I was the dullest tool in the shed, but that was fine. It's not that I wasn't sharp. It's that I was in a shed with lawnmowers made of lightsaber.</p>
+
+<!-- more -->
+
+
+<p></p>
+
+<blockquote class="twitter-tweet"><p>Really excellent day today. Learned about creeping on people with data and the disgusting guts of browsers from some really clever gents.</p>&mdash; Armand Zerilli (@zerilliworks) <a href="https://twitter.com/zerilliworks/status/324337394360930304">April 17, 2013</a></blockquote>
+
+
+<script async src="http://blog.zerilliworks.net//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p></p>
+
+<p>I was a bit nervous going into it, as I often am with these kinds of events, but I got over that surprisingly quickly just by shaking hands and telling people my name. I can't emphasize enough how easily that calmed me. I remember standing outside on the street looking at the door and wondering if I'd even be able to keep up with what happened in there. The fear was completely unfounded, and mostly dissolved by shaking hands and exchanging names.</p>
+
+<p>I got some water, took a seat, and felt immediately that I was the youngest person there by at least five years. Mostly just an observation. I wasn't bothered by being new, and it didn't seem anyone else was either. I had been worried I would be bothered, but... There I was, acquainting myself with the enthusiastic faces of the Ithaca web people.</p>
+
+<p>Presentations were given, jokes were exchanged, and cats were turned into bacon. Marvelous. I got to really feel what proficient and well-adjusted programmers do, and a little about how they think. I fear that I asked some silly-sounding questions, but they were regardless met with thoughtful consideration and straight answers.</p>
+
+<p>In my startup experience, meetups were often in the mixed company of business-types and technology-types, and everybody was putting on a show. In those <em>"little businesses that could,"</em> every second of every conversation was a pitch in some way or another. I was glad to see no trace of that here.</p>
+
+<p>Before I left, I waited outside with one of the attendees with whom I had an informative exchange regarding my recent efforts and employment opportunities I didn't even know existed. Seriously, there are more than a handful of web companies in Ithaca. My eyebrows peaked for sure, in a good way. The way that says, "By Jove! Not so forlorn is my situation after all!"</p>
+
+<p>I left feeling refreshed and somewhat humbled. I picked up more in that couple of hours than I probably had taught myself in the last month. Having people who can speak concisely and from experience is an invaluable learning tool.</p>
+
+<p>So if you're a bit of a hermit, please do what I did. Don't think too big, don't worry about acting silly, and don't worry about judgement. Connecting yourself to the world isn't that difficult, and it's certainly not the kind of competitive overanalyzing that many social cynics say it is. Just do what I did.</p>
+
+<p>Shake hands, say your name, and listen.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[I'm Here for the Evolution]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/03/28/im-here-for-the-evolution/"/>
+    <updated>2013-03-28T04:47:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/03/28/im-here-for-the-evolution</id>
+    <content type="html"><![CDATA[<p>I never really addressed this, so I'll do it now. I've been programming as an amateur for a long time. I'm almost 20, and it's really grown into my primary focus over the last few years. I'd like to share what led up to the starting of this blog. It's only a part of a big change for me.</p>
+
+<!-- more -->
+
+
+<h2>It started with a startup.</h2>
+
+<p>Early last year, I began working for a startup company here in Ithaca. A bright and clever young team with a great idea and unstoppable motivation. We were little guys trying to launch a new film distribution company. For other little guys, too: Independent filmmakers.</p>
+
+<p>It was a business forged from passion. We were all film buffs and attended film school, which means we had all seen some gems get passed over and lost in even niche film interest groups. Seriously, high-caliber films made by incredibly smart people. We couldn't believe they weren't more popular. We watched every film we acquired, and movie night came right after every meeting.</p>
+
+<p><span class='pullquote-right' data-pullquote='It was absolutely thrilling.'>
+I was their only software developer. We were just getting started, and funding was still iffy, but we worked tirelessly. I was given complete control over the technology, and I had never had such a big responsibility. It was absolutely thrilling. If I wanted to ship a new feature, I didn't ask anybody. As long as I kept my priorities straight, I could implement whatever I wanted. They trusted me with their website, and I took good care of it.
+</span></p>
+
+<p>We continued acquiring films and building features and spreading the word. We actually landed some award-winning short films in the beginning, personally vetted by each of us. We went to Tribeca and interviewed with startup incubators. This was a startup in every sense of the word, and that was totally new to me. It was beyond exciting.</p>
+
+<p><span class='pullquote-right' data-pullquote='I still get poignant flashbacks when I say that things turned sour.'>
+I still get poignant flashbacks when I say that things turned sour. I was literally losing my mind from the stress and we began to shed some connections from circumstances beyond our control. I snapped after a heated exchange with my partners wherein I learned we severely differed on some core principles, which I felt morally opposed to. Things started to get fishy, and I had to leave. Not only was my health degrading, but I discovered a shocking truth that day. These were good people, but the chemistry turned out to be completely wrong. After parting ways, everything fell apart. The company made a failed attempt at crowd-sourced funding and garnered only lukewarm reception in a film festival partnership. Sometimes I felt like I let a lot of people down. I felt like the biggest failure imaginable. I had never been more lost or embarrassed.
+</span></p>
+
+<p>All things considered, it was actually a burnout waiting to happen. I couldn't have kept that work up. No one could for long. We weren't doing it quite right. It felt like a part of me died when the company crumbled, and it still bothers me to this day.</p>
+
+<p>I lapsed into seclusion. I kept programming, but I did it behind closed doors. I continued to teach myself as I typically did, but there was always something nagging me with every method I wrote. Something that told me I should be ashamed of what I was doing, that somehow it wasn't good enough. It was so bad some days that I would start up my IDE and stare at the new project wizard for a minute before quitting it and watching television. I was afraid to even start something.</p>
+
+<p>The failure of that startup really got to me. I may not have invested much more than time, but it hurt a lot. I didn't consult with anybody. And sometimes I lied about it. That nagging voice telling me I wasn't perfect degraded the quality of my work. I let things slide because I was always doubting myself. I tried again and again to produce marketable ideas, but just couldn't make them work. I felt dead-ended. I have struggled with depression before, and it made a strong resurgence during this period. I had never felt lower.</p>
+
+<p><span class='pullquote-right' data-pullquote='As it turns out, every problem I faced could somehow or another be traced back to my isolated nature.'>
+Around Christmas last year, things finally started to change. I produced a solid idea, one that I found useful and relevant, something I was compelled to work on. I kept hitting some roadblocks, which prompted me to do a little thinking about what was sticking its thorns in me. As it turns out, every problem I faced could somehow or another be traced back to my isolated nature.
+</span></p>
+
+<p>I had been social, of course, but my work was secret. I was afraid of sharing anything. I realized that had to change.</p>
+
+<p>I perused forums, I signed up for mailing lists and message boards. I signed up for Github and put up a repository of my own. Even though that repository was pretty worthless, it was a symbolic step for me. <a href="/projects/shadowcv">That project was one of my first</a>, and now there is nothing to hide about it. I hadn't been very open before, so I'm taking more steps now. I've also netted myself an account with a hip new programmer's network called <a href="http://koding.com">Koding.</a> I'm asking questions and seeking advice. I really want to be the best programmer I can, and I know that's impossible if I stay in my bubble. No matter how good I get at Trivial Pursuit while I'm here.</p>
+
+<p>This blog may be unremarkable on the scale of the Internet, but it is <em>huge</em> for me. Maybe my ideas really are unique and interesting. Maybe I'll make a connection to someone that kicks my ass and changes the way I think forever. And what if by letting go of my comforting solitude I flourish enough to create the systems I dream about? I would be crazy to ignore these possibilities.</p>
+
+<p>The people that know me personally might find me socially capable and outgoing. In many cases that's true. But professionally and with my work, I never talked to anyone seriously. I had chats about what I do, but I couldn't connect. I am hoping that changes.</p>
+
+<p><span class='pullquote-right' data-pullquote='I don&#8217;t want to cover up my weaknesses anymore.'>
+So here I am. I've accepted my past shortcomings and I'm playing to my strengths. I don't want to cover up my weaknesses anymore. I want to bring them into the light and be realistic about them. If I can fill in these weaknesses, I will. Even if I can't, I'll gain insight into the ways I can best support my work and the work of those I collaborate with.
+</span></p>
+
+<p>As I say often, all I've ever wanted to do is help people, and that means accepting help when I need it.</p>
+
+<p>I am beyond grateful for any advice I get through the things I write and I can't be appreciative enough of the time anyone spends helping me. I realize now that we're all in this together, and being a vigilante was crippling me. I need to embrace the world, and I've been truly inspired by a lot of really smart programmers and genuine technologists who are all looking to improve the world around them. I've probably sent you emails at some point or another, you know who you are. Thank you. Truly.</p>
+
+<p>That's why I do this. I want to learn. I do this for me right now, but I hope that it may help others and eventually become a channel through which I can return the favors I've been granted.</p>
+
+<h2>Hello, world. I'm Armand. And I'm here to evolve.</h2>
+]]></content>
+  </entry>
+  
+</feed>
