@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Social | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/social/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-04-21T00:55:49-04:00</updated>
+  <updated>2013-04-24T02:24:15-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -23,7 +23,7 @@
 <!-- more -->
 
 
-<p></p>
+<p>{% raw %}</p>
 
 <blockquote class="twitter-tweet"><p>Really excellent day today. Learned about creeping on people with data and the disgusting guts of browsers from some really clever gents.</p>&mdash; Armand Zerilli (@zerilliworks) <a href="https://twitter.com/zerilliworks/status/324337394360930304">April 17, 2013</a></blockquote>
 
@@ -31,7 +31,7 @@
 <script async src="http://blog.zerilliworks.net//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-<p></p>
+<p>{% endraw %}</p>
 
 <p>I was a bit nervous going into it, as I often am with these kinds of events, but I got over that surprisingly quickly just by shaking hands and telling people my name. I can't emphasize enough how easily that calmed me. I remember standing outside on the street looking at the door and wondering if I'd even be able to keep up with what happened in there. The fear was completely unfounded, and mostly dissolved by shaking hands and exchanging names.</p>
 
