@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Laravel | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/laravel/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-04-24T02:23:34-04:00</updated>
+  <updated>2013-04-24T02:35:03-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -14,30 +14,587 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Supercharged Testing With the IoC Container]]></title>
-    <link href="http://blog.zerilliworks.net/blog/2013/04/17/supercharged-ioc-testing/"/>
-    <updated>2013-04-17T13:40:00-04:00</updated>
-    <id>http://blog.zerilliworks.net/blog/2013/04/17/supercharged-ioc-testing</id>
-    <content type="html"><![CDATA[<p>Laravel provides a great implementation of an IoC container, which has a wonderful smorgasbord of uses. One particularly useful case is customized experimental texting when building your application.</p>
+    <title type="html"><![CDATA[Blade Extensions in Laravel]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel/"/>
+    <updated>2013-04-03T10:42:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel</id>
+    <content type="html"><![CDATA[<p>This one took me a little while to figure out, since it’s not particularly well documented. In Laravel, it’s possible to extend the syntax of the Blade template language with your own statements. I heard it mentioned once, and found a few functions <a href="http://laravel.com/api/source-class-Laravel.Blade.html#75">in the API documentation</a> which led me to creating customized Blade statements.</p>
 
-<!-- more -->
+<!--more-->
 
 
-<h3>SO WHAT THE HELL IS AN IoC CONTAINER?</h3>
+<h2>It's Not That Difficult.</h2>
 
-<p>You can skip this if you're savvy, but some people jumping into PHP and Laravel for the first time might not grasp this yet.</p>
+<p>Blade has a variety of built-in statements to manage the logic and rendering of your templates. At its core, Blade simply translates these statements into regular PHP. For example:</p>
 
-<p>IoC stands for <em>Inversion of Control.</em>  When you typically write software modules, they're well defined from the get-go and glued into their frames of functionality. Your code is on a canvas, and once you paint it, you'll have to paint over it to change anything.</p>
+<pre><code>
+@if(Session::has(‘login-errors’))
+&lt;div class=”alert”&gt;&lt;h2&gt;Uh-oh! {{ Session::get(‘login-errors’) }} &lt;/h2&gt;&lt;/div&gt;
+@endif
 
-<p>IoC containers are more like sticky notes. Sticky notes come in the hundreds, and they're all the same. You peel off a sticky note when you need one and write specifically what you need on it. Every note is identical, but you've added special information at the point at which you need it. It serves as your reminder for as long as you require, then you crumple it up and try to toss it in a trash bin that's too far away.</p>
+</code></pre>
 
-<p>An IoC container turns your code into sticky notes. You stick your daily reminders on  there along with the regular items that you need to do. Like a reminder to buy more Jarlsberg. Nobody is going to break out the brushes to paint cheese on their canvases. You peel off a sticky note, write BUY CHEESE on it, and put it where it's visible.</p>
+<p>This set of statements looks in the Session for any login errors and displays them. Here, we used Blade’s <code>{{ }}</code> syntax for echoing statements, and the <code>@if</code> and <code>@endif</code> statements to make a decision. Once touched by Blade, it looks like this:</p>
 
-<h2>Make Your Modules Into Sticky Notes</h2>
+<pre><code>&lt;?php if(Session::has(‘login-errors’)): ?&gt;
+&lt;div class=”alert”&gt;&lt;h2&gt;Uh-oh! &lt;?php echo Session::get(‘login-errors’) ?&gt;&lt;/h2&gt;&lt;/div&gt;
+&lt;?php endif; ?&gt;
+</code></pre>
 
-<p>Inverting Control means defining objects at runtime, as your code is being evaluated. It encourages a very high level of decoupling the reusable code from the problem-specific code because you're creating modules on the spot that solve specific problems by extending reusable modules as needed.</p>
+<p>There’s nothing too special about it now. It’s plain, regularly parseable PHP. Adding a Blade extension only means adding a few such substitutions yourself.</p>
 
-<p>How about this:</p>
+<p>To register a Blade extension, you do this:</p>
+
+<pre><code>Blade::extend(function($view) {
+    // Statement code...
+});
+</code></pre>
+
+<p><code>Blade::extend()</code> adds a closure function onto a stack of functions through which a view is run during the rendering process. All of the typical Blade statements are <a href="http://laravel.com/api/source-class-Laravel.Blade.html#186">defined in a similar manner.</a> The view is examined and all instances of <code>@if</code> are replaced with <code>&lt;?php if(): ?&gt;</code>, instances of <code>@render()</code> are replaced with <code>&lt;?php echo render() ?&gt;</code>, etc.</p>
+
+<p>The <code>$view</code> variable will contain a plain text version of the view to be rendered, and the closure defined will perform the replacement of the custom Blade syntax with PHP statements. Both of these are handled as strings.</p>
+
+<h2>Markup Extensions</h2>
+
+<p>You could add custom Blade statements as a compact syntax for elements you frequently use. Let’s say you use a lot of Zurb Foundation’s progress bar components. You’d register the Blade extension like this:</p>
+
+<pre><code>Blade::extend(function ($view) {
+$html = "&lt;div class=\"progress\"&gt;&lt;span class=\"meter\"&gt;&lt;/span&gt;&lt;/div&gt;";
+return str_replace("@progressbar", $html, $view);
+});
+</code></pre>
+
+<p>And now, <code>@progressbar</code> becomes...</p>
+
+<p><code>&lt;div class=”progress”&gt;&lt;span class=”meter”&gt;&lt;/span&gt;&lt;/div&gt;</code></p>
+
+<p>Although that’s not particularly useful, since we can’t set the progress of the progress bar. Let’s tweak that Blade extension.</p>
+
+<pre><code>Blade::extend(function ($view) {
+$html = "&lt;div class=\"progress\"&gt;&lt;span class=\"meter\" style=\"width: $1%\"&gt;&lt;/span&gt;&lt;/div&gt;";
+return preg_replace("#\s*@progressbar\(\s*([0-9]*)\s*\)#", $html, $view);
+});
+</code></pre>
+
+<p>So if we use these:</p>
+
+<pre><code>&lt;div class="row"&gt;
+    &lt;div class="small-12 columns"&gt;
+        @progressbar(75)
+        @progressbar(10)
+        @progressbar(43)
+        @progressbar(100)
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>We end up with this:</p>
+
+<p><img class="center" src="/images/articles/blade-extensions-in-laravel/progressbars.png"></p>
+
+<p>Now, we can use <code>@progressbar(XX%)</code> to specify a progress bar showing partial completion. It’s now possible to specify a percentage which the progress bar should represent. The closure extracts the number from our custom statement and uses it to set the CSS width property of the “meter” class element.</p>
+
+<p>If you’re not too familiar with regular expressions, read up a bit on Wikipedia. A basic understanding isn't too difficult to attain, and it's logically straightforward to learn their proper use. The most important part is that this expression...</p>
+
+<pre><code>\s*@progressbar\(\s*([0-9]*)\s*\)
+</code></pre>
+
+<p>...extracts the numbers as a sub-expression. These numbers are inserted into the <code>$1</code> symbol in the replacement text.</p>
+
+<p>Simple string manipulation functions like <code>str_replace</code> (<a href="http://www.php.net/manual/en/function.str-replace.php">docs</a>) work well for one-off replacements like inserting static PHP code, but regex-capable functions such as <code>preg_replace</code> (<a href="http://www.php.net/manual/en/function.preg-replace.php">docs</a>) are necessary if you're including some arguments or modifiers that require a RegEx to find and replace.</p>
+
+<h2>Functional Extensions</h2>
+
+<p>In this example, I'll use the <a href="http://bundles.laravel.com/bundle/Browser">Laravel Browser bundle</a> to identify mobile users, and add some Blade extensions to change the rendering of templates for them.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>routes.php </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;IoC::singleton(&#39;Browser&#39;, function()</span>
+</span><span class='line'><span class="x">{&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;return new Browser($_SERVER[&#39;HTTP_USER_AGENT&#39;]);</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;});&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;//      @mobile statement               ///////////////////////////////////////////</span>
+</span><span class='line'><span class="x">Blade::extend(function($view)</span>
+</span><span class='line'><span class="x">{&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;return str_replace(&#39;@mobile&#39;, &quot;&amp;lt;?php if(IoC::resolve(&#39;Browser&#39;)-&amp;gt;isMobile()): ?&amp;gt;&quot;, $view);</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;});&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;//      @endmobile statement            ///////////////////////////////////////////</span>
+</span><span class='line'><span class="x">Blade::extend(function($view)</span>
+</span><span class='line'><span class="x">{&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;return str_replace(&#39;@endmobile&#39;, &quot;&amp;lt;?php endif; ?&amp;gt;&quot;, $view);</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;});&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;//      @desktop statement              ///////////////////////////////////////////</span>
+</span><span class='line'><span class="x">Blade::extend(function ($view) {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;return str_replace(&#39;@desktop&#39;, &quot;&amp;lt;?php if(!IoC::resolve(&#39;Browser&#39;)-&amp;gt;isMobile()): ?&amp;gt;&quot;, $view);</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;});&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;//      @enddesktop statement           ///////////////////////////////////////////</span>
+</span><span class='line'><span class="x">Blade::extend(function ($view) {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;return str_replace(&#39;@enddesktop&#39;, &quot;&amp;lt;?php endif; ?&amp;gt;&quot;, $view);</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;});&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;// Your regular routes</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The first operation registers an instance of the Browser class in the IoC container (<a href="http://laravel.com/docs/ioc">docs</a>). Browser is used to determine what user agent the client is running. In this case, it’s to distinguish users on desktop computers from users on phones and tablets. The IoC container handily keeps this instance ready for us. The code that follows registers the various Blade extensions with Laravel. There are four extensions illustrated here:</p>
+
+<ul>
+<li><code>@mobile</code></li>
+<li><code>@endmobile</code></li>
+<li><code>@desktop</code></li>
+<li><code>@enddesktop</code></li>
+</ul>
+
+
+<p>The <code>@desktop</code> and <code>@enddesktop</code> statements will only render content between them if the user is on a desktop PC. This might be used to add sidebars or extra navigation material only on desktops, where there’s enough space to add such elements. <code>@mobile</code> and <code>@endmobile</code> do the same thing for mobile devices. These might be used to add sections of sites for mobile users, such as compact dashboards that are more suitable for phones and tablets. They also work with the <code>@else</code> Blade statement, since they’re really just PHP if statements. Nothing all that special about them.</p>
+
+<p>I've mocked up a Blade template for a user's dashboard on a food-tracking website. It's a bit lengthy, but it'll show you how to conditionally change content with Blade statements. In here, mobile users will see a condensed dashboard with large buttons, while desktop users will see a quick-add form, a search box, and a list of recent eats by friends. They also see different navigation components.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Using the mobile Blade extensions </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>!DOCTYPE HTML&gt;
+</span><span class='line'><span class="nt">&lt;head&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span><span class="ni">&amp;lt;</span>title<span class="ni">&amp;gt;</span>An Absolutely Incredible Food App<span class="ni">&amp;lt;</span>/title<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span>@mobile
+</span><span class='line'><span class="ni">&amp;lt;</span>h1<span class="ni">&amp;gt;</span>Welcome to our mobile site.<span class="ni">&amp;lt;</span>/h1<span class="ni">&amp;gt;</span>
+</span><span class='line'>@endmobile
+</span><span class='line'>@desktop
+</span><span class='line'><span class="ni">&amp;lt;</span>h1<span class="ni">&amp;gt;</span>Welcome to our site.<span class="ni">&amp;lt;</span>/h1<span class="ni">&amp;gt;</span>
+</span><span class='line'>@enddesktop
+</span><span class='line'>
+</span><span class='line'>@mobile
+</span><span class='line'><span class="ni">&amp;lt;</span>dl class=&quot;sub-nav&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>dt<span class="ni">&amp;gt;</span>Filter:<span class="ni">&amp;lt;</span>/dt<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>dd<span class="ni">&amp;gt;&amp;lt;</span>a href=&quot;#&quot;<span class="ni">&amp;gt;</span>All<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;&amp;lt;</span>/dd<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>dd<span class="ni">&amp;gt;&amp;lt;</span>a href=&quot;#&quot;<span class="ni">&amp;gt;</span>Tasty<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;&amp;lt;</span>/dd<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>dd<span class="ni">&amp;gt;&amp;lt;</span>a href=&quot;#&quot;<span class="ni">&amp;gt;</span>Yucky<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;&amp;lt;</span>/dd<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>dd<span class="ni">&amp;gt;&amp;lt;</span>a href=&quot;#&quot;<span class="ni">&amp;gt;</span>Friends<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;&amp;lt;</span>/dd<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>/dl<span class="ni">&amp;gt;</span>
+</span><span class='line'>@endmobile
+</span><span class='line'>
+</span><span class='line'>@desktop
+</span><span class='line'><span class="ni">&amp;lt;</span>ul class=&quot;side-nav&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>li<span class="ni">&amp;gt;&amp;lt;</span>a href=&quot;#&quot;<span class="ni">&amp;gt;</span>All Foods<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;&amp;lt;</span>/li<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>li<span class="ni">&amp;gt;&amp;lt;</span>a href=&quot;#&quot;<span class="ni">&amp;gt;</span>Tasty Foods<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;&amp;lt;</span>/li<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>li<span class="ni">&amp;gt;&amp;lt;</span>a href=&quot;#&quot;<span class="ni">&amp;gt;</span>Yucky Foods<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;&amp;lt;</span>/li<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>li<span class="ni">&amp;gt;&amp;lt;</span>a href=&quot;#&quot;<span class="ni">&amp;gt;</span>Friend&#39;s Foods<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;&amp;lt;</span>/li<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>/ul<span class="ni">&amp;gt;</span>
+</span><span class='line'>@enddesktop
+</span><span class='line'>
+</span><span class='line'>@mobile
+</span><span class='line'><span class="ni">&amp;lt;</span>h3<span class="ni">&amp;gt;</span>Mobile Dashboard<span class="ni">&amp;lt;</span>/h3<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>div class=&quot;buttons&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>a href=&quot;http://blog.zerilliworks.net/food/add&quot;<span class="ni">&amp;gt;</span>Add Something You Ate<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>a href=&quot;http://blog.zerilliworks.net/friends/foods&quot;<span class="ni">&amp;gt;</span>What Your Friends Ate<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>a href=&quot;http://blog.zerilliworks.net/list&quot;<span class="ni">&amp;gt;</span>Eat List<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>a href=&quot;http://blog.zerilliworks.net/messages&quot;<span class="ni">&amp;gt;</span>Messages<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+</span><span class='line'>@endmobile
+</span><span class='line'>
+</span><span class='line'>@desktop
+</span><span class='line'><span class="ni">&amp;lt;</span>h3<span class="ni">&amp;gt;</span>Your Dashboard<span class="ni">&amp;lt;</span>/h3<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>form<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>input type=&quot;text&quot; name=&quot;new_food&quot; placeholder=&quot;Put in a new food...&quot;/<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>button type=&quot;submit&quot;<span class="ni">&amp;gt;</span>Add it!<span class="ni">&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>/form<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>form<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>input type=&quot;text&quot; name=&quot;search_foods&quot; placeholder=&quot;Search for a food...&quot;/<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>button type=&quot;submit&quot;<span class="ni">&amp;gt;</span>Find it!<span class="ni">&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>/form<span class="ni">&amp;gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="ni">&amp;lt;</span>table<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>thead<span class="ni">&amp;gt;</span>
+</span><span class='line'>        <span class="ni">&amp;lt;</span>tr<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>th<span class="ni">&amp;gt;</span>Date<span class="ni">&amp;lt;</span>/th<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>th<span class="ni">&amp;gt;</span>Recent Food<span class="ni">&amp;lt;</span>/th<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>th<span class="ni">&amp;gt;</span>Eaten By<span class="ni">&amp;lt;</span>/th<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>th<span class="ni">&amp;gt;</span>YUMS and YUCKS<span class="ni">&amp;lt;</span>/th<span class="ni">&amp;gt;</span>
+</span><span class='line'>        <span class="ni">&amp;lt;</span>/tr<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>/thead<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>tbody<span class="ni">&amp;gt;</span>
+</span><span class='line'>        <span class="ni">&amp;lt;</span>tr<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>Just Now<span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>Pineapple Pizza<span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>J. Kyle<span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>5 YUMS and 13 YUCKS<span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
+</span><span class='line'>        <span class="ni">&amp;lt;</span>/tr<span class="ni">&amp;gt;</span>
+</span><span class='line'>        <span class="ni">&amp;lt;</span>tr<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>2 hours ago<span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>Breadsticks<span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>M. Toledo<span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>8 YUMS and 0 YUCKS<span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
+</span><span class='line'>        <span class="ni">&amp;lt;</span>/tr<span class="ni">&amp;gt;</span>
+</span><span class='line'>        <span class="ni">&amp;lt;</span>tr<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>3 hours ago<span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>Raw Eggs<span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>E. Ferguson<span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
+</span><span class='line'>            <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>0 YUMS and 20 YUCKS<span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
+</span><span class='line'>        <span class="ni">&amp;lt;</span>/tr<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>/tbody<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>/table<span class="ni">&amp;gt;</span>
+</span><span class='line'>@enddesktop
+</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And after running through Blade and our custom extensions, that view looks like this:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>After rendering </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;!DOCTYPE HTML&gt;</span>
+</span><span class='line'><span class="x">&lt;head&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;&amp;lt;title&amp;gt;An Absolutely Incredible Food App&amp;lt;/title&amp;gt;</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;&lt;/head&gt;</span>
+</span><span class='line'><span class="x">&lt;body&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;&amp;lt;?php if(IoC::resolve(&#39;Browser&#39;)-&amp;gt;isMobile()): ?&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;h1&amp;gt;Welcome to our mobile site.&amp;lt;/h1&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;?php endif; ?&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;?php if(!IoC::resolve(&#39;Browser&#39;)-&amp;gt;isMobile()): ?&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;h1&amp;gt;Welcome to our site.&amp;lt;/h1&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;?php endif; ?&amp;gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="x">&amp;lt;?php if(IoC::resolve(&#39;Browser&#39;)-&amp;gt;isMobile()): ?&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;dl class=&quot;sub-nav&quot;&amp;gt;</span>
+</span><span class='line'><span class="x">  &amp;lt;dt&amp;gt;Filter:&amp;lt;/dt&amp;gt;</span>
+</span><span class='line'><span class="x">  &amp;lt;dd&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;All&amp;lt;/a&amp;gt;&amp;lt;/dd&amp;gt;</span>
+</span><span class='line'><span class="x">  &amp;lt;dd&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Tasty&amp;lt;/a&amp;gt;&amp;lt;/dd&amp;gt;</span>
+</span><span class='line'><span class="x">  &amp;lt;dd&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Yucky&amp;lt;/a&amp;gt;&amp;lt;/dd&amp;gt;</span>
+</span><span class='line'><span class="x">  &amp;lt;dd&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Friends&amp;lt;/a&amp;gt;&amp;lt;/dd&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;/dl&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;?php endif; ?&amp;gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&amp;lt;?php if(!IoC::resolve(&#39;Browser&#39;)-&amp;gt;isMobile()): ?&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;ul class=&quot;side-nav&quot;&amp;gt;</span>
+</span><span class='line'><span class="x">  &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;All Foods&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;</span>
+</span><span class='line'><span class="x">  &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Tasty Foods&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;</span>
+</span><span class='line'><span class="x">  &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Yucky Foods&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;</span>
+</span><span class='line'><span class="x">  &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#&quot;&amp;gt;Friend&#39;s Foods&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;/ul&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;?php endif; ?&amp;gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&amp;lt;?php if(IoC::resolve(&#39;Browser&#39;)-&amp;gt;isMobile()): ?&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;h3&amp;gt;Mobile Dashboard&amp;lt;/h3&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;div class=&quot;buttons&quot;&amp;gt;</span>
+</span><span class='line'><span class="x">    &amp;lt;a href=&quot;http://blog.zerilliworks.net/food/add&quot;&amp;gt;Add Something You Ate&amp;lt;/a&amp;gt;</span>
+</span><span class='line'><span class="x">    &amp;lt;a href=&quot;http://blog.zerilliworks.net/friends/foods&quot;&amp;gt;What Your Friends Ate&amp;lt;/a&amp;gt;</span>
+</span><span class='line'><span class="x">    &amp;lt;a href=&quot;http://blog.zerilliworks.net/list&quot;&amp;gt;Eat List&amp;lt;/a&amp;gt;</span>
+</span><span class='line'><span class="x">    &amp;lt;a href=&quot;http://blog.zerilliworks.net/messages&quot;&amp;gt;Messages&amp;lt;/a&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;/div&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;?php endif; ?&amp;gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&amp;lt;?php if(!IoC::resolve(&#39;Browser&#39;)-&amp;gt;isMobile()): ?&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;h3&amp;gt;Your Dashboard&amp;lt;/h3&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;form&amp;gt;</span>
+</span><span class='line'><span class="x">    &amp;lt;input type=&quot;text&quot; name=&quot;new_food&quot; placeholder=&quot;Put in a new food...&quot;/&amp;gt;</span>
+</span><span class='line'><span class="x">    &amp;lt;button type=&quot;submit&quot;&amp;gt;Add it!&amp;lt;/button&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;/form&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;form&amp;gt;</span>
+</span><span class='line'><span class="x">    &amp;lt;input type=&quot;text&quot; name=&quot;search_foods&quot; placeholder=&quot;Search for a food...&quot;/&amp;gt;</span>
+</span><span class='line'><span class="x">    &amp;lt;button type=&quot;submit&quot;&amp;gt;Find it!&amp;lt;/button&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;/form&amp;gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&amp;lt;table&amp;gt;</span>
+</span><span class='line'><span class="x">    &amp;lt;thead&amp;gt;</span>
+</span><span class='line'><span class="x">        &amp;lt;tr&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;th&amp;gt;Date&amp;lt;/th&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;th&amp;gt;Recent Food&amp;lt;/th&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;th&amp;gt;Eaten By&amp;lt;/th&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;th&amp;gt;YUMS and YUCKS&amp;lt;/th&amp;gt;</span>
+</span><span class='line'><span class="x">        &amp;lt;/tr&amp;gt;</span>
+</span><span class='line'><span class="x">    &amp;lt;/thead&amp;gt;</span>
+</span><span class='line'><span class="x">    &amp;lt;tbody&amp;gt;</span>
+</span><span class='line'><span class="x">        &amp;lt;tr&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;td&amp;gt;Just Now&amp;lt;/td&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;td&amp;gt;Pineapple Pizza&amp;lt;/td&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;td&amp;gt;J. Kyle&amp;lt;/td&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;td&amp;gt;5 YUMS and 13 YUCKS&amp;lt;/td&amp;gt;</span>
+</span><span class='line'><span class="x">        &amp;lt;/tr&amp;gt;</span>
+</span><span class='line'><span class="x">        &amp;lt;tr&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;td&amp;gt;2 hours ago&amp;lt;/td&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;td&amp;gt;Breadsticks&amp;lt;/td&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;td&amp;gt;M. Toledo&amp;lt;/td&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;td&amp;gt;8 YUMS and 0 YUCKS&amp;lt;/td&amp;gt;</span>
+</span><span class='line'><span class="x">        &amp;lt;/tr&amp;gt;</span>
+</span><span class='line'><span class="x">        &amp;lt;tr&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;td&amp;gt;3 hours ago&amp;lt;/td&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;td&amp;gt;Raw Eggs&amp;lt;/td&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;td&amp;gt;E. Ferguson&amp;lt;/td&amp;gt;</span>
+</span><span class='line'><span class="x">            &amp;lt;td&amp;gt;0 YUMS and 20 YUCKS&amp;lt;/td&amp;gt;</span>
+</span><span class='line'><span class="x">        &amp;lt;/tr&amp;gt;</span>
+</span><span class='line'><span class="x">    &amp;lt;/tbody&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;/table&amp;gt;</span>
+</span><span class='line'><span class="x">&amp;lt;?php endif; ?&amp;gt;</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;&lt;/body&gt;</span>
+</span><span class='line'><span class="x">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>When creating Blade extensions, you can use whatever string modification function you’d like as long as it returns <code>$view</code> in full. Unless, I suppose, you want to clip out chunks of the view's data. Can't come up with a practical case in which that would help, but who knows? Just remember that you're modifying the <em>whole view before it's rendered</em>, so be careful not to have any runaway regexes or imprecise matching.</p>
+
+<p>You can also feel pretty free to add Blade extensions to your project. Markup extensions require almost no overhead, since Laravel caches rendered pages. Functional extensions are parsed into PHP first, so they're remarkably quick to render as well. Blade extensions are a great way to save time for small snippets you use often and are more compact than rendering a partial view. I suppose you shouldn't go <em>too</em> crazy with them, or you might end up putting them together in ways that could better be served by a partial or view composer. Blade extensions should be sprinkled. If you've ended up putting most of your markup in Blade extensions you might be doing it wrong.</p>
+
+<p>There it is. I hope this helped you figure out Blade extensions. They're really easy to use and can leverage the convenience and expression of Blade in specialized ways. You could even create a bundle that contains your favorite Blade extensions. All you'd have to do is register them in the bundle's start.php file and tell Laravel to auto-load it. Easy as Sunday morning.</p>
+
+<p>Good luck, and happy coding.</p>
 ]]></content>
   </entry>
   

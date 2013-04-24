@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Thoughts | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/thoughts/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-04-24T02:24:15-04:00</updated>
+  <updated>2013-04-24T02:35:03-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -29,7 +29,7 @@
 
 <p>So have a look at this.</p>
 
-<p>{% img /images/articles/Weebly-Believing.png Don't stop believin' (in your website) %}</p>
+<p><img src="/images/articles/Weebly-Believing.png" title="Don't stop believin' (in your website)" ></p>
 
 <p><a href="/extras/weebly-believing.html/">If you can't see the image, click here for the text version.</a></p>
 
@@ -43,7 +43,7 @@
 
 <p>Then this happens:</p>
 
-<p>{% img /images/articles/Weebly-Sniffle.png Sniffle. Sniffle... %}</p>
+<p><img src="/images/articles/Weebly-Sniffle.png" title="Sniffle. Sniffle..." ></p>
 
 <p><a href="/extras/weebly-sniffle.html/">If you can't see the image, click here for the text version.</a></p>
 
@@ -51,7 +51,7 @@
 
 <p>Don't fret though, you fantastically sincere liars, I think this email could be fixed pretty easily.</p>
 
-<p>{% img /images/articles/Weebly-Sniffle-fixed.png Just take a Sharpie to it. %}</p>
+<p><img src="/images/articles/Weebly-Sniffle-fixed.png" title="Just take a Sharpie to it." ></p>
 
 <p>There. That's basically free advice, Weebly. If your team is feeling sincere and nervous and sympathetic, my typical consulting fee is $17,000.</p>
 

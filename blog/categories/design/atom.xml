@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Design | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/design/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-04-24T02:24:15-04:00</updated>
+  <updated>2013-04-24T02:35:03-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -29,11 +29,11 @@
 
 <p>Let me provide a real-life analogy. Click/tap on any image in this article for a full-size version.</p>
 
-<p><a href="/images/articles/hotel-doors/checkin_notice.jpg">{% img /images/articles/hotel-doors/checkin_notice.jpg %}</a></p>
+<p><a href="/images/articles/hotel-doors/checkin_notice.jpg"><img src="/images/articles/hotel-doors/checkin_notice.jpg"></a></p>
 
 <p>That's an important notice about checkin times. Should probably read that. It's just suction-cupped to the sliding doors. But I can't quite read it from back here.</p>
 
-<p><a href="/images/articles/hotel-doors/thats_convenient.jpg">{% img left /images/articles/hotel-doors/thats_convenient.jpg %}</a></p>
+<p><a href="/images/articles/hotel-doors/thats_convenient.jpg"><img class="left" src="/images/articles/hotel-doors/thats_convenient.jpg"></a></p>
 
 <p>I could still go get up close and try to read it, but I tried and stood out of the way of the sensors and the doors closed again. This is basically no different from an improper implementation of dynamic content loading in social sites. So this is what I think of all that.</p>
 
@@ -41,7 +41,7 @@
 
 <p>When you log in to Vimeo, you'll see a feed of videos added to the channels you follow in a nice little list there. It shows about ten items to start with. At the bottom, there's a link that says "Load more videos". Once you've clicked that, it turns on AJAX loading of more entries. Toggling auto loading AND limiting the information inflow? Atta boy.</p>
 
-<p><a href="/images/articles/ajax_examples/Vimeo.png">{% img center /images/articles/ajax_examples/Vimeo.png "Toggling auto loading AND limiting the information inflow? Atta boy." %}</a></p>
+<p><a href="/images/articles/ajax_examples/Vimeo.png"><img class="center" src="/images/articles/ajax_examples/Vimeo.png" title="&#34;Toggling auto loading AND limiting the information inflow? Atta boy.&#34;" alt="&#34;Toggling auto loading AND limiting the information inflow? Atta boy.&#34;"></a></p>
 
 <h3><strong>GOOD JOB, VIMEO.</strong></h3>
 
@@ -51,7 +51,7 @@
 
 <p>Facebook will always show you more. There are some handy links at the bottom of Facebook pages (like the developer links or the Help and Privacy links), but it's unlikely that you'd ever see them for more than a split second. The feed is pushing interface elements out of the way. That's a tad annoying. I mean, why even put them down there?</p>
 
-<p><a href="/images/articles/ajax_examples/Facebook.png">{% img center /images/articles/ajax_examples/Facebook.png "AJAX loading is pushing interface elements out of the way. That's a tad annoying." %}</a></p>
+<p><a href="/images/articles/ajax_examples/Facebook.png"><img class="center" src="/images/articles/ajax_examples/Facebook.png" title="&#34;AJAX loading is pushing interface elements out of the way. That's a tad annoying.&#34;" alt="&#34;AJAX loading is pushing interface elements out of the way. That's a tad annoying.&#34;"></a></p>
 
 <h3><strong>CLOSE BUT NO CIGAR, FACEBOOK.</strong></h3>
 
@@ -59,7 +59,7 @@
 
 <p>The horizontal layout of the new Myspace enables nicer persistent navigation elements than your standard sticky nav bars. While scrolling horizontally through social feeds, more items are loaded on the right, where there are no controls or even optionally accessible elements to shove out of the way. Myspace consolidated their important interface element in places that were always visible. Scroll as much as you like, that navigation box isn't going anywhere. It always floats above other content and remains on the left.</p>
 
-<p><a href="/images/articles/ajax_examples/myspace.png">{% img center /images/articles/ajax_examples/myspace.png "Scroll as much as you like, that navigation box isn't going anywhere." %}</a></p>
+<p><a href="/images/articles/ajax_examples/myspace.png"><img class="center" src="/images/articles/ajax_examples/myspace.png" title="&#34;Scroll as much as you like, that navigation box isn't going anywhere.&#34;" alt="&#34;Scroll as much as you like, that navigation box isn't going anywhere.&#34;"></a></p>
 
 <h3><strong>WAY TO BREAK THE MOLD, MYSPACE.</strong></h3>
 
@@ -71,13 +71,13 @@
 
 <p>Twitter gets it right because it helps wrangle the kind of data they present. Streams of tweets should be well-controlled. Adding AJAX loading without thought can cause frustrations if you deal with data that's always trickling in. Like Twitter.</p>
 
-<p><a href="/images/articles/ajax_examples/Twitter.png">{% img center /images/articles/ajax_examples/Twitter.png "Control the flow and know how much new information is about to hit." %}</a></p>
+<p><a href="/images/articles/ajax_examples/Twitter.png"><img class="center" src="/images/articles/ajax_examples/Twitter.png" title="&#34;Control the flow and know how much new information is about to hit.&#34;" alt="&#34;Control the flow and know how much new information is about to hit.&#34;"></a></p>
 
 <h3><strong>SMART MOVE, TWITTER.</strong></h3>
 
 <p>I'll do one more case study for a good implementation of streaming updates: Koding, a hip new social coding and developer network. Koding has an activity feed, a prominent one, where it encourages people to share code and ask questions, among other things. When you've got your scroll positioned at the very top a little Live Update toggle turns on. This means that as long as you're right at the top of the list, it will auto-load updates. This is good. Scrolling down even a little, however, will toggle the feature off, so no more updates stream in live and shuffle around something you may be skimming over. It allows you to control the flow of data, and that data is what we want to consume at our own pace, right?</p>
 
-<p><a href="/images/articles/ajax_examples/Koding.png">{% img center /images/articles/ajax_examples/Koding.png "Being able to toggle AJAX loading helps a lot. Please do this more." %}</a></p>
+<p><a href="/images/articles/ajax_examples/Koding.png"><img class="center" src="/images/articles/ajax_examples/Koding.png" title="&#34;Being able to toggle AJAX loading helps a lot. Please do this more.&#34;" alt="&#34;Being able to toggle AJAX loading helps a lot. Please do this more.&#34;"></a></p>
 
 <h3><strong>GOOD ON YA, KODING.</strong></h3>
 
@@ -103,7 +103,7 @@
 
 <p>C'mon, guys. It's not actually that hard. Make the flow of data support the behavior of your users and the type of content you deliver. Sometimes, just don't use it. Why is pagination so bad? What ever happened to getting to pick the number of results per page? Really, what was so terrible about that? I think we just got a little caught up with the ability to avoid page reloads.</p>
 
-<p><a href="/images/articles/ajax_examples/Google.png">{% img center /images/articles/ajax_examples/Google.png "Was pagination so terrible?" %}</a></p>
+<p><a href="/images/articles/ajax_examples/Google.png"><img class="center" src="/images/articles/ajax_examples/Google.png" title="&#34;Was pagination so terrible?&#34;" alt="&#34;Was pagination so terrible?&#34;"></a></p>
 
 <p>Seriously. Is this actually such a horrible thing? I doubt it.</p>
 ]]></content>
