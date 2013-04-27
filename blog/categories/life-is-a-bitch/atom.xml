@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Life is a Bitch | Zerillian Engineering]]></title>
+  <link href="http://blog.zerilliworks.net/blog/categories/life-is-a-bitch/atom.xml" rel="self"/>
+  <link href="http://blog.zerilliworks.net/"/>
+  <updated>2013-04-26T21:11:57-04:00</updated>
+  <id>http://blog.zerilliworks.net/</id>
+  <author>
+    <name><![CDATA[Armand Zerilli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[All Work and No Play Makes Jack Become an Architect and Build a Bridge to Jump From]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/04/26/all-work-and-no-play-makes-jack-become-an-architect-and-build-a-bridge-to-jump-from/"/>
+    <updated>2013-04-26T20:44:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/04/26/all-work-and-no-play-makes-jack-become-an-architect-and-build-a-bridge-to-jump-from</id>
+    <content type="html"><![CDATA[<p>Working in my past job at a film distribution startup was at times a nightmare. I was the only programmer doing the work of four, which I hear is not uncommon among the tech startup scene. Most of it can be summed up in saying it was too much work for too little reward, and it damn near killed me.</p>
+
+<!-- more -->
+
+
+<p>I was the only one I had to answer to in implementing a feature, and I did it quickly. I dodged left and right to meet the expectations of my partners, building out a feature and abandoning it as a nonessential or too convoluted. It could be fun, since I got to experiment with a lot of things. I did code monkey work in the past, so a promotion to an architect-like position felt empowering. OH HOW NAÏVE I WAS.</p>
+
+<p>Ultimately, I worked all the time without seeing regular gains in functionality and overall enjoyment using the app. I had burned through development with workaholic kerosene and I built the shoddy, ill-conceived bridge from which I would make my Javert-esque plunge into the dark, churning waters below.</p>
+
+<p>This lesson is simple. If you’re feeling stymied, it’s probably because you’ve worked too hard for too little. Essentially, <em>it's your own absent-minded blundering fault.</em> <strong>BUT DON'T FEEL SHITTY ABOUT IT.</strong> Chances are, you were doing what felt right at the time. Sometimes throwing more hours at a problem sounds like the proper solution but is absolutely the wrong thing to do. Sometimes you’ve wandered so far from your ideals that working smarter and not harder still isn’t enough to fix your bridge. It becomes more and more difficult if you're attached to your ideas and stubborn in protecting them. These are great traits to have, but they can sadly become misdirected. The deluded image of a workplace hero is one who is willing to sacrifice himself for the project.</p>
+
+<p>The thing is, though, that you are part of what makes the project alive. Destroying your health will cause far more harm than good. I should know. I wasn't kidding when I said it damn near killed me. I've got juvenile-onset diabetes, and the stress led to remiss intermittent care.</p>
+
+<p>This is mostly why I’m teaching myself about Ruby on Rails. It’s instant gratification. They’re serious when they say Rails can do in days what takes others weeks. The work you put into it is satisfying. You’re the architect of your app. You shouldn’t be mixing the concrete and bending rebar. Use your tools to empower your ideas whenever possible. Working with PHP was unbearable more often than not. I was laying bricks when I should have been sketching out the new wing of the museum.</p>
+
+<p>My misdirected brute-forcing of problems blindly pushed the project forward. I was just building a bridge so we could cross the river. This was all the faith I had in the project, just that it could be done. When that illusion shattered... It was nothing short of odious.  Now, I see myself as part of my projects, and them as a part of me. My health reflects theirs and vice-versa. I think you too will find your projects say as much about you as you do about them.</p>
+
+<p>I didn’t always plan on flinging myself off the unfinished end of my bridge, but that outcome was, in retrospect, inevitable.</p>
+]]></content>
+  </entry>
+  
+</feed>
