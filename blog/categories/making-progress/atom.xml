@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Making Progress | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/making-progress/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-05-30T05:39:36-04:00</updated>
+  <updated>2013-05-30T05:42:29-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Four Triangles]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/05/29/four-triangles/"/>
+    <updated>2013-05-29T01:29:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/05/29/four-triangles</id>
+    <content type="html"><![CDATA[<p>My professional identity has been through many iterations, one of which demanded a better logo. A simpler logo. A logo that would guide my journey to becomeing a mastermind.</p>
+
+<p>Or, I dunno, I just got sick of my old one. Here's how it went.</p>
+
+<!-- more -->
+
+
+<p>When I first spiffed up a logo, it was wicked nasty.</p>
+
+<p><img src="/images/articles/four-triangles/old_logo.png">
+<em>LOOK AT THAT SON OF A BITCH.</em></p>
+
+<p>It served me well for a couple of years when I did work in high school and before my startup experience. But at the beginning of 2012 it was in need of a refresh. I tried to remove as much extra detail as possible. I tried a few logos before thinking about the absolute fewest things I would need. The polygon with the fewest sides, the triangle, and the fewest triangles necessary. Which turned out to be four.</p>
+
+<p>People sometimes tell me that they don't see a Z and a W right away. I'm okay with that. I like that it's a little abstract.</p>
+
+<p>Threw this fiddle together to show the four simple shapes and give them some attitude. This drifting logo sat on the homepage of zerilliworks.net while the blog was under construction.</p>
+
+<p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/adNUq/embedded/result,js,html,css/light/"></iframe></p>
+
+<p>You can mouse over or tap on them to get them back in line. Cheeky bastards. You can also see the original under construction page <a href="/extras/under_construction.html">here.</a> The drifting triangles take a while to manifest, they were more of an easter egg.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[All Work and No Play Makes Jack Become an Architect and Build a Bridge to Jump From]]></title>
