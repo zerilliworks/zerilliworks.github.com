@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<head>
+	<title>Zerilliworks.net</title>
+	<meta name="description" content="Zerilliworks - Superdynamic. If you don't already know, you shouldn't.">
+	<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bonsai/0.4.1/bonsai.min.js"></script>
+	<style type="text/css">
+		body {
+			overflow: hidden;
+		}
+		#movie {
+			position: absolute;
+			width: 1920px;
+			height: 1200px;
+			left: 50%;
+			margin-left: -960px;
+			top: 50%;
+			margin-top: -600px;
+		}
+	</style>
+</head>
+	<body>
+
+	<div id="movie"></div>
+
+	<script type="text/javascript">
+		var _width = 1920;
+		var _height = 1200;
+		var _anim_duration = '120s';
+
+		var bonsaielement = bonsai.run(document.getElementById('movie'), {
+			code: function () {
+				var logo = new Group().addTo(stage);
+				var triangles = [];
+				var floaters = [];
+
+				var _mouse_event = null;
+
+				stage.on('multi:pointerdown', function(e)
+				{
+					_mouse_event = e;
+				});
+				stage.on('multi:pointermove', function (e) {
+					_mouse_event = e;
+				});
+				stage.on('multi:pointerup', function (e) {
+					_mouse_event = null;
+				});
+
+
+				// function randomRotation()
+				// {
+				//     (Math.random - 0.5) * 2;
+				// }
+
+				var _anim_duration = '120s';
+				var _rotation_vec_divisor = 650;
+				var _motion_vec_divisor = 14;
+				var _reset_delay_stepper = 500;
+				var _start_delay_seconds = 45;
+				var _update_interval = 50;
+				var _spawn_chance = 5/100;
+
+
+				new Text('"I\'m working on it, get off my case already."')
+  					.attr({x: 0, y: 160, textFillColor: '#ff7500',
+	   					fontFamily: 'Patrick Hand SC', fontSize: 26
+  					})
+  				.addTo(logo);
+				
+				triangles[0] = {
+					poly: new Polygon(100, 100, 80, 3)
+							.addTo(logo)
+							.attr('fillColor', '#ff7500')
+							.on('pointermove',function (e) {
+								reset(triangles[0]);
+							}).on('multi:pointerdown', function (e) {
+								reset(triangles[0]);
+							}),
+					homepos: [100, 100],
+					homerot: 0,
+					idealrot: 0,
+					animvector: [((Math.random() - 0.5) / _motion_vec_divisor), ((Math.random() - 0.5) / _motion_vec_divisor), ((Math.random() - 0.5) / _rotation_vec_divisor)],
+					stopped: false,
+					stoptriggered: false,
+					stoptimer: 0
+				};
+				triangles[1] = {
+					poly: new Polygon(130, 60, 80, 3)
+							.addTo(logo)
+							.attr('fillColor', '#ff7500')
+							.attr('rotation', Math.PI)
+							.on('pointermove',function (e) {
+								reset(triangles[1]);
+							}).on('multi:pointerdown', function (e) {
+								reset(triangles[1]);
+							}),
+					homepos: [130, 60],
+					homerot: Math.PI,
+					idealrot: 0,
+					animvector: [((Math.random() - 0.5)) / _motion_vec_divisor, ((Math.random() - 0.5)) / _motion_vec_divisor, ((Math.random() - 0.5) / _rotation_vec_divisor)],
+					stopped: false,
+					stoptriggered: false,
+					stoptimer: 0
+				};
+				triangles[2] = {
+					poly: new Polygon(270, 60, 80, 3)
+							.addTo(logo)
+							.attr('fillColor', '#ff7500')
+							.attr('rotation', Math.PI)
+							.on('pointermove',function (e) {
+								reset(triangles[2]);
+							}).on('multi:pointerdown', function (e) {
+								reset(triangles[2]);
+							}),
+					homepos: [270, 60],
+					homerot: Math.PI,
+					idealrot: 0,
+					animvector: [((Math.random() - 0.5)) / _motion_vec_divisor, ((Math.random() - 0.5)) / _motion_vec_divisor, ((Math.random() - 0.5) / _rotation_vec_divisor)],
+					stopped: false,
+					stoptriggered: false,
+					stoptimer: 0
+				};
+				triangles[3] = {
+					poly: new Polygon(320, 60, 80, 3)
+							.addTo(logo)
+							.attr('fillColor', '#ff7500')
+							.attr('rotation', Math.PI)
+							.on('pointermove',function (e) {
+								reset(triangles[3]);
+							}).on('multi:pointerdown', function (e) {
+								reset(triangles[3]);
+							}),
+					homepos: [320, 60],
+					homerot: Math.PI,
+					idealrot: 0,
+					animvector: [((Math.random() - 0.5)) / _motion_vec_divisor, ((Math.random() - 0.5)) / _motion_vec_divisor, ((Math.random() - 0.5) / _rotation_vec_divisor)],
+					stopped: false,
+					stoptriggered: false,
+					stoptimer: 0
+				};
+
+				logo.attr('opacity', 0.0)
+						.animate('1s', {
+							opacity: 1.0
+						});
+				logo.attr('x', (stage.width / 2) - 200).attr('y', (stage.height / 2) - 80);
+
+				function distance(point1, point2)
+				{
+					return Math.sqrt(((point1.x - point2.x)^2) + ((point1.y - point2.y)^2));
+				}
+
+				var t = stage.children();
+
+				function updatetris() {
+					for (var i = 0, tri;
+					     (tri = triangles[i++]);) {
+						if (!tri.stopped && tri.stoptimer <= 0) {
+							tri.poly.attr('x', tri.poly.attr('x') + tri.animvector[0]);
+							tri.poly.attr('y', tri.poly.attr('y') + tri.animvector[1]);
+							tri.poly.attr('rotation', tri.poly.attr('rotation') + tri.animvector[2]);
+							tri.idealrot += tri.animvector[2];
+						} else if (tri.stoptimer == 1) {
+							tri.stoptimer = 0;
+							tri.stopped = false;
+							tri.stoptriggered = false;
+						}
+						else if (tri.stoptimer > 0) {
+							tri.stoptimer--;
+						}
+					}
+					// spawntri();
+					// updatefloaters();
+				}
+
+				function updatefloaters()
+				{
+
+					for (var i = 0, tri; (tri=floaters[i++]);)
+					{
+						if(tri.age > tri.lifespan)
+						{
+							tri.poly.remove();
+						} else {
+							tri.age++;
+							tri.poly.attr('x', tri.poly.attr('x') + tri.animvector[0]);
+							tri.poly.attr('y', tri.poly.attr('y') + tri.animvector[1]);
+							tri.poly.attr('rotation', tri.poly.attr('rotation') + tri.animvector[2]);
+							if(((tri.lifespan - tri.age) < 100))
+							{
+								tri.poly.attr('opacity', tri.poly.attr('opacity') - 0.01);
+							}
+						}
+					}
+				}
+
+				function mousepush()
+				{
+
+				}
+
+				function spawntri()
+				{
+					if(Math.random() < _spawn_chance)
+					{
+						var scale = Math.random();
+						floaters.push( {
+							poly: new Polygon((Math.random() * 1920), 1280, scale * 120, 3)
+									.addTo(stage)
+									.attr('fillColor', '#ff7500')
+									.attr('rotation', Math.PI * Math.random()),
+							animvector: [0, ((scale) * -1) * 3, ((Math.random() - 0.5) / 200)],
+							age: 0,
+							lifespan: (15 / scale) * _update_interval,
+							x_velocity: 0,
+							y_velocity: 0
+						});
+					}
+				}
+
+				function reset(tri) {
+					// tri.poly.stop();
+					if (!tri.stoptriggered) {
+						if (tri.poly.attr('rotation') != tri.homerot + tri.idealrot) {
+							tri.poly.attr('rotation', tri.homerot + tri.idealrot);
+						}
+						tri.poly.animate('1s', {
+							x: tri.homepos[0],
+							y: tri.homepos[1],
+							rotation: tri.homerot
+						}, {
+							easing: 'elasticOut',
+							delay: '0s'
+						});
+						tri.stopped = true;
+						tri.stoptriggered = true;
+						tri.stoptimer = _reset_delay_stepper;
+						tri.animvector = [((Math.random() - 0.5) / _motion_vec_divisor), ((Math.random() - 0.5) / _motion_vec_divisor), ((Math.random() - 0.5) / _rotation_vec_divisor)];
+					}
+				}
+
+				setTimeout(function () {
+					setInterval(updatetris, _update_interval);
+				}, _start_delay_seconds * 1000);
+
+			},
+			width: _width,
+			height: _height
+
+		});
+	</script>
+	</body>
+</html>

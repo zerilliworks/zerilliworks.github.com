@@ -4,7 +4,7 @@
   <title><![CDATA[Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-05-18T00:56:02-04:00</updated>
+  <updated>2013-05-30T05:39:36-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Four Triangles]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/05/29/four-triangles/"/>
+    <updated>2013-05-29T01:29:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/05/29/four-triangles</id>
+    <content type="html"><![CDATA[<p>When I first spiffed up a logo, it was wicked nasty.</p>
+
+<p><img src="http://blog.zerilliworks.net/images/articles/four-triangles/old_logo.png">
+<em>LOOK AT THAT SON OF A BITCH.</em></p>
+
+<p>It served me well for a couple of years when I did work in high school and before my startup experience. But at the beginning of 2012 it was in need of a refresh. I tried to remove as much extra detail as possible. I tried a few logos before thinking about the absolute fewest things I would need. The polygon with the fewest sides, the triangle, and the fewest triangles necessary. Which turned out to be four.</p>
+
+<p>People sometimes tell me that they don&#8217;t see a Z and a W right away. I&#8217;m okay with that. I like that it&#8217;s a little abstract.</p>
+
+<p>Threw this fiddle together to show the four simple shapes and give them some attitude. This drifting logo sat on the homepage of zerilliworks.net while the blog was under construction.</p>
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/adNUq/embedded/result,js,html,css/light/"></iframe>
+
+
+<p>You can mouse over or tap on them to get them back in line. Cheeky bastards. You can also see the original under construction page <a href="http://blog.zerilliworks.net/extras/under_construction.html">here.</a> The drifting triangles take a while to manifest, they were more of an easter egg.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[All Work and No Play Makes Jack Become an Architect and Build a Bridge to Jump From]]></title>
@@ -821,7 +844,7 @@ So here I am. I&#8217;ve accepted my past shortcomings and I&#8217;m playing to 
 
 <p><img src="http://blog.zerilliworks.net/images/articles/Weebly-Believing.png" title="Don't stop believin' (in your website)" ></p>
 
-<p><a href="http://blog.zerilliworks.net/extras/weebly-believing.html/">If you can&#8217;t see the image, click here for the text version.</a></p>
+<p><a href="http://blog.zerilliworks.net/extras/weebly-believing.html">If you can&#8217;t see the image, click here for the text version.</a></p>
 
 <p>The time since I signed up is probably the second worst thing about this. It&#8217;s just odd. It reminds me that there is some task somewhere (clearly not a human) that is looking over less-than-frequently-active accounts and telling them to get going. It&#8217;s unbelievably insincere, and it&#8217;s frankly a little condescending. How so?</p>
 
@@ -835,7 +858,7 @@ So here I am. I&#8217;ve accepted my past shortcomings and I&#8217;m playing to 
 
 <p><img src="http://blog.zerilliworks.net/images/articles/Weebly-Sniffle.png" title="Sniffle. Sniffle..." ></p>
 
-<p><a href="http://blog.zerilliworks.net/extras/weebly-sniffle.html/">If you can&#8217;t see the image, click here for the text version.</a></p>
+<p><a href="http://blog.zerilliworks.net/extras/weebly-sniffle.html">If you can&#8217;t see the image, click here for the text version.</a></p>
 
 <p>The subject of this message was literally &#8220;That&#8217;s sad.&#8221; No, this email is the sad thing. You trained machines to sound sympathetic, and it&#8217;s just unsettling to make them cry. <em>For the love of God, knock it off.</em> There&#8217;s nothing wrong with the concept of automated messages. But <em>please</em> do not make them f&#8211;king cry. That does not make me feel cared for. Your team doesn&#8217;t seem to be there for me, it seems like you need to clutch your flaky customers in a death grip.</p>
 
