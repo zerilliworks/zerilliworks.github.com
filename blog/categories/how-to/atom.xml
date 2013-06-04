@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-To | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-05-30T05:42:29-04:00</updated>
+  <updated>2013-06-04T00:57:15-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel/"/>
     <updated>2013-04-03T10:42:00-04:00</updated>
     <id>http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel</id>
-    <content type="html"><![CDATA[<p><em>Note: This was originally written for Laravel 3, and may not apply in the more recent Laravel 4.</em></p>
+    <content type="html"><![CDATA[<p><em>Note: I'm working on a rewrite for Laravel 4. This was originally written for Laravel 3, and a lot has changed. The IoC container is very different, Blade compilers aren't the same, and the Blade syntax has gotten a little cleaner. It's rather nice.</em></p>
 
 <p>This one took me a little while to figure out, since it’s not particularly well documented. In Laravel, it’s possible to extend the syntax of the Blade template language with your own statements. I heard it mentioned once, and found a few functions <a href="http://laravel.com/api/source-class-Laravel.Blade.html#75">in the API documentation</a> which led me to creating customized Blade statements.</p>
 
