@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-06-08T21:41:15-04:00</updated>
+  <updated>2013-07-10T02:11:04-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel/"/>
     <updated>2013-04-03T10:42:00-04:00</updated>
     <id>http://blog.zerilliworks.net/blog/2013/04/03/blade-extensions-in-laravel</id>
-    <content type="html"><![CDATA[<p><em>Note: I'm working on a rewrite for Laravel 4. This was originally written for Laravel 3, and a lot has changed. The IoC container is very different, Blade compilers aren't the same, and the Blade syntax has gotten a little cleaner. It's rather nice.</em></p>
+    <content type="html"><![CDATA[<h2><a href="/blog/2013/07/10/blade-extensions-in-laravel-4/">Updated for Laravel 4 - Click Here</a></h2>
 
 <p>This one took me a little while to figure out, since it’s not particularly well documented. In Laravel, it’s possible to extend the syntax of the Blade template language with your own statements. I heard it mentioned once, and found a few functions <a href="http://laravel.com/api/source-class-Laravel.Blade.html#75">in the API documentation</a> which led me to creating customized Blade statements.</p>
 
@@ -56,7 +56,8 @@
 
 <p>The <code>$view</code> variable will contain a plain text version of the view to be rendered, and the closure defined will perform the replacement of the custom Blade syntax with PHP statements. Both of these are handled as strings.</p>
 
-<h2>Markup Extensions</h2>
+<h2 id="markup-extensions">Markup Extensions</h2>
+
 
 <p>You could add custom Blade statements as a compact syntax for elements you frequently use. Let’s say you use a lot of Zurb Foundation’s progress bar components. You’d register the Blade extension like this:</p>
 
@@ -94,7 +95,7 @@ return preg_replace("#\s*@progressbar\(\s*([0-9]*)\s*\)#", $html, $view);
 
 <p><img class="center" src="/images/articles/blade-extensions-in-laravel/progressbars.png"></p>
 
-<p>Now, we can use <code>@progressbar(XX%)</code> to specify a progress bar showing partial completion. It’s now possible to specify a percentage which the progress bar should represent. The closure extracts the number from our custom statement and uses it to set the CSS width property of the “meter” class element.</p>
+<p>It’s now possible to specify a percentage which the progress bar should represent. The closure extracts the number from our custom statement and uses it to set the CSS width property of the “meter” class element.</p>
 
 <p>If you’re not too familiar with regular expressions, read up a bit on Wikipedia. A basic understanding isn't too difficult to attain, and it's logically straightforward to learn their proper use. The most important part is that this expression...</p>
 
