@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-07-10T02:14:31-04:00</updated>
+  <updated>2013-07-10T02:24:08-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -19,6 +19,9 @@
     <updated>2013-07-10T00:05:00-04:00</updated>
     <id>http://blog.zerilliworks.net/blog/2013/07/10/blade-extensions-in-laravel-4</id>
     <content type="html"><![CDATA[<p>Laravel 4 is here, and it's a thing of beauty. Among all the remarkable new features remains the ability to extend the Blade template with your own statements and functionality. I previously wrote about how to do it in Laravel 3, and thankfully it is equally straightforward in Laravel 4. There's even a bit more explanation this time around. So here it is, Blade Extensions for every artisan's favorite framework.</p>
+
+<!-- more -->
+
 
 <p>Blade has a nice 'n easy syntax for template creation that works by substituting PHP for the Blade statements when a view is rendered. Making a Blade extension means defining a closure function that does this substitution and telling Laravel to run it on the stack of Blade compilers already in place.</p>
 
