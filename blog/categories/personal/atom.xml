@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Personal | Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/blog/categories/personal/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-07-10T02:24:56-04:00</updated>
+  <updated>2013-07-10T23:21:50-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[50 Cents Doesn't Buy a Lot of Trouble]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/07/10/50-cents-doesnt-buy-a-lot-of-trouble/"/>
+    <updated>2013-07-10T22:46:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/07/10/50-cents-doesnt-buy-a-lot-of-trouble</id>
+    <content type="html"><![CDATA[<p>Here in Ithaca, we've got a pleasant little outdoor concourse of restaurants and merchant establishments running beside pavilions and statues and trees: The Ithaca Commons. Lately, it's had everything ripped out for rennovation, but... Still.</p>
+
+<p>Whenever I'm on the Commons, I go to a toy store on State street and buy a bouncy ball for 50 cents. As I walk, I bounce it on the ground and against walls. It's a benign, calming activity. I've thrown them against buildings, bounced them high in the air, and naturally lost all of them.</p>
+
+<p>I've accidentally flung them out into the streets, at windows, down drains, and even into other people. I keep buying them and losing them every time. I don't mind. It adds an element of chaos to a life I spend so much time structuring. Those superballs are utterly unpredictable.</p>
+
+<p>For a while, I can control them. Though it's inevitable that they hit a pebble and bounce far off, leading me into a stumbling chace to recapture them. It keeps happening, and I never know when. All I can do is run clumsily and make attempts at snatching them, thinking the whole time that there's a good chance I never see that ball again.</p>
+
+<p>Chaos is necessary. It shatters my perception that I have anything more than a suggestive input on my life. In reality, I control very little. Somehow the universe keeps working fairly predictably, but it's easy to forget that I can lose control in an instant to a roll of the metaphoric dice.</p>
+
+<p>So those little bouncy rubber balls serve not only as a fun distraction, but a reminder that the gears of these ephemeral probability engines are always grinding; they are constantly on the verge of engaging with potentially life-changing force. Part of me hopes that when I lose one of those balls it rolls into another life and adds some intrigue. They forcibly put predictability on hold and seed chaotic activity.</p>
+
+<p>In a time when fifty cents doesn't buy a whole lot of trouble, I consider that a triumph.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Connect Yourself to the World]]></title>
@@ -192,100 +213,6 @@ So here I am. I've accepted my past shortcomings and I'm playing to my strengths
 <p>If you're someone who also dislikes this sort of indiscretion, I'd appreciate a comment so I know I'm not alone.</p>
 
 <p>Also, if you happen to be an English professor and would like to tell me whether I should have used <em>whom</em> in that last sentence, I would appreciate it.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Preeow, Universe.]]></title>
-    <link href="http://blog.zerilliworks.net/blog/2013/03/09/preeow/"/>
-    <updated>2013-03-09T02:23:00-05:00</updated>
-    <id>http://blog.zerilliworks.net/blog/2013/03/09/preeow</id>
-    <content type="html"><![CDATA[<p>I've heard that one of the big things that separates mediocre programmers from
-good ones is blog writing. Participation in the open source scene is huge as well,
-but getting people to listen to you is eye-opening and empowering. At least, I feel
-that it is. Sharing of information is what makes the Web remarkable. If I have
-things to contribute, I think I should get them out there.</p>
-
-<!--more-->
-
-
-<h2>Allow Me to Introduce Myself.</h2>
-
-<p><em>My name is Armand.</em> I'm a quirky round-faced ball of enthusiasm and big time
-programming enthusiast. I've been writing code for the better part of my life, in
-some form or another. I decided to make Web programming my specialty after I taught
-myself PHP and witnessed the power I immediately channeled with just a text editor.</p>
-
-<p>All I've ever really wanted to do is help people, and creating systems for the Web
-fascinates me. I may have the opportunity to share what I have to offer with a lot
-of people. It's a much larger scale than fixing computers, which I always thought
-was a pain in the ass.</p>
-
-<p>My old boss told the old joke,</p>
-
-<blockquote><p>How many programmers does it take to screw in a lightbulb? None, that's a hardware problem!</p></blockquote>
-
-<p>Oh, how we laughed.</p>
-
-<p>So in the same ways I've taken on a DIY attitude, I've taught myself everything I
-know about these electric beasts. They are deeply fascinating to me. I've seen more
-than a handful of bright-eyed young programmers showcase what I call hollow talent.
-It's similar to how you might bulls--t someone you're talking to such that you
-appear to be informed about the topic at hand. Sadly, a lot of this fresh talent is
-built on looking up into higher constructs while not understanding the activity
-that drives them.</p>
-
-<p>My first programming experience came while learning about robotics in a summer-camp
-sort of program. I was just about twelve, and we had a lot to play with. They had
-those nifty Lego robitcs sets, sure. But the real pleasure was working with a real
-machine; the <em>Parallax BASIC Stamp</em> was the first real computer I've ever bossed
-around.</p>
-
-<p>On a microcontroller, you don't get any help. There are functions and implementations
-that keep your hardware afloat, and that's it. No standard
-libraries. All you have is math and memory access, essentially. That was my boot
-camp.</p>
-
-<p>I learned to have fun with the BASIC Stamp, simple as they were. Most of it was
-the fact that transferring a program to the little EEPROM on these robots would
-immediately bring them to life. I'd get to tweak and test continually, and it was
-endlessly entertaining. This is probably where I established by preferred development
-paradigm: Test-driven development.</p>
-
-<p>I taught myself about the implementation of many simple algorithms, since there was
-no hand-holding in PBASIC (Parallax's extension of BASIC adding microcontroller-specific
-constructs). Step by step, I built up core computer science knowledge, almost
-without knowing it. All that really mattered was that I was getting to do new things
-with what I learned. Learning enabled a unique kind of excitement for me, and I
-never lost the desire to learn. The self-teaching process, though frustrating at
-times, is still the activity I find most rewarding.</p>
-
-<p>I kept it rolling, picking up C++ while I worked with openFrameworks (which was unbelievably
-fun) and later PHP, where I got my foundation in web programming. HTML, CSS, JavaScript...
-They all came along with it. And now I'm further pushing my boundaries in the web with
-languages like Ruby and Erlang. I was never much a fan of Python, but to be fair I never
-gave it a thorough try.</p>
-
-<p>And these all just barely scratch the surface. I have so much more to illuminate.</p>
-
-<p>I tend not to think in absolutes. There are some issues that polarize me, but I've
-always been a rather open-minded individual. I contrast this to a majority of tech
-bloggers whom are opinionated, stubborn, and elitist. I'll admit that these are
-sometimes positions that are easy to settle into, which is perhaps why people become
-such binary thinkers with little awareness to the fact.</p>
-
-<p>There is so much to experience in the world of technology, that I've found it far
-more enjoyable to explore and absorb new ideas. Odd as this may sound, I try to never
-think that I'm doing something right. It doesn't mean I think I'm wrong. It means I
-don't hold my methods as perfect or authorotative. There's often a better way to do
-things. Even if I'm solving a problem to the best of my ability or in the best
-possible way, I like to remain aware of and receptive to concepts carried in on the
-intermittent gusts of fresh air.</p>
-
-<p>All of this experience and philosophy culminates in my overarching life goal: To be helpful.
-A lot of people have a lot of problems, and somehow I plan on solving at least one of them.</p>
-
-<p>This is me. And I can be very helpful.</p>
 ]]></content>
   </entry>
   
