@@ -4,7 +4,7 @@
   <title><![CDATA[Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-07-23T02:32:42-04:00</updated>
+  <updated>2013-08-27T23:02:44-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -75,6 +75,8 @@ Page Title
 </code></pre>
 
 <p>The extension looks a little intimidating, but it really isn&#8217;t. It&#8217;s just a wrapper for a standard find-and-replace function (<code>preg_replace()</code>) that swaps the custom Blade tag with some raw PHP.</p>
+
+<p>Update: <a href="http://localhost:4000/blog/2013/07/10/blade-extensions-in-laravel-4/#comment-1013474993">It&#8217;s been pointed out to me</a> that there&#8217;s an existing function to create matchers for PHP swaps like this. Look at the <a href="http://laravel.com/api/class-Illuminate.View.Compilers.BladeCompiler.html#_createMatcher">createMatcher docs.</a></p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
