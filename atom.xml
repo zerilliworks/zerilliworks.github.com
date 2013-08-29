@@ -4,7 +4,7 @@
   <title><![CDATA[Zerillian Engineering]]></title>
   <link href="http://blog.zerilliworks.net/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
-  <updated>2013-08-27T23:07:41-04:00</updated>
+  <updated>2013-08-29T00:21:40-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
   <author>
     <name><![CDATA[Armand Zerilli]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[De-Emphasizing the Server (Preface)]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/08/28/de-emphasizing-the-server-preface/"/>
+    <updated>2013-08-28T23:20:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/08/28/de-emphasizing-the-server-preface</id>
+    <content type="html"><![CDATA[<p>Only as a little introduction and to prove I still pay attention to things, I&#8217;ll offer a breif commentary on a fascinating area of web engineering.</p>
+
+<p>Being a little guy in this business, I have only the level of resources that entitles me to complain that AWS is too expensive (Read: web hosting budget is $30 monthly.) The engineer&#8217;s mindset, however, is free (as in beer, it takes a long time to learn). You know what else is free? <em>Your visitor&#8217;s browsers.</em></p>
+
+<!-- more -->
+
+
+<p>Even in the case of this little website, my readers point browsers over here that are backed with enough CPU cores to do the work of a large Amazon EC2 instance. For higher traffic sites, there might be thousands of cores and terabytes of memory in play.</p>
+
+<p>Of course, I&#8217;d never hoover up all of a browser&#8217;s resources. Technical constraints notwithstanding, it&#8217;s a shitty thing to do. But what if I could just take an extra sliver of CPU and RAM from each of my users and combine it into something powerful?</p>
+
+<p>Enter <a href="http://www.w3.org/TR/workers/">Web Workers</a>, <a href="http://www.webrtc.org">WebRTC</a>, and their bretheren. Asynchronous tasks and peer-to-peer connectivity in the browser. The implications here are huge. It gives me spine shivers.</p>
+
+<p>I can spin off little Web Workers to, say, create a keyword index for a new status update or get link previews without my server fetching them first, or even help distribute static assets. Hell, I could have browsers run a site themselves just by seeding a JavaScript file and some images via a CDN. Just imagine what a <em>completely decentralized infrastructure</em> would look like. Web browsers do the work, the backend just keeps shit straightened up.</p>
+
+<h3>Is your mind not as blown as mine is?</h3>
+
+<p>I&#8217;ll be attending a meetup to discuss these very topics. I&#8217;m excited enough to write about it beforehand. The ideas themselves warrant some deep though and admiration, so I&#8217;ll be researching these topics heavily. If this technology can be packaged up in an accesible way, then exceeding bandwidth may be a thing of the past. Perhaps I&#8217;ll never have to toss thousands of dollars to a hosting company or black-out my apps if a server gets gimped. It&#8217;s a topic I intend to research, test, and report on further. I&#8217;d love to do an in-depth write up of potential implementations and features achievable with such new capabilities.</p>
+
+<p>To think that my users can one day share the computational love and in the process shave down my hosting bill&#8230;  That kind of thing keeps me up at night.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[50 Cents Doesn't Buy a Lot of Trouble]]></title>
