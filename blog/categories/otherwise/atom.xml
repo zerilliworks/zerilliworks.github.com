@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Design | Zerillian Engineering]]></title>
-  <link href="http://blog.zerilliworks.net/blog/categories/design/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Otherwise | Zerillian Engineering]]></title>
+  <link href="http://blog.zerilliworks.net/blog/categories/otherwise/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
   <updated>2013-09-12T23:59:47-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[50 Cents Doesn't Buy a Lot of Trouble]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/07/23/50-cents-doesnt-buy-a-lot-of-trouble/"/>
+    <updated>2013-07-23T22:46:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/07/23/50-cents-doesnt-buy-a-lot-of-trouble</id>
+    <content type="html"><![CDATA[<p>Here in Ithaca, we've got a pleasant little outdoor concourse of restaurants and merchant establishments running beside pavilions and statues and trees: The Ithaca Commons. Lately, it's had everything ripped out for rennovation, but... Still.</p>
+
+<p>Whenever I'm on the Commons, I go to a toy store on State street and buy a bouncy ball for 50 cents. As I walk, I bounce it on the ground and against walls. It's a benign, calming activity. I've thrown them against buildings, bounced them high in the air, and naturally lost all of them.</p>
+
+<!-- more -->
+
+
+<p>I've accidentally flung them out into the streets, at windows, down drains, and even into other people. I keep buying them and losing them every time. I don't mind. It adds an element of chaos to a life I spend so much time structuring. Those superballs are utterly unpredictable.</p>
+
+<p>For a while, I can control them. Though it's inevitable that they hit a pebble and bounce far off, leading me into a stumbling chase to recapture them. It keeps happening, and I never know when. All I can do is run clumsily and make attempts at snatching them, thinking the whole time that there's a good chance I never see that ball again.</p>
+
+<p>Chaos is necessary. It shatters my perception that I have anything more than a suggestive input on my life. In reality, I control very little. Somehow the universe keeps working fairly predictably, but it's easy to forget that I can lose control in an instant to a roll of the metaphoric dice.</p>
+
+<p>So those little bouncy rubber balls serve not only as a fun distraction, but a reminder that the gears of these ephemeral probability engines are always grinding; they are constantly on the verge of engaging with potentially life-changing force. Part of me hopes that when I lose one of those balls it rolls into another life and adds some intrigue. They forcibly put predictability on hold and seed chaotic activity.</p>
+
+<p>In a time when fifty cents doesn't buy a whole lot of trouble, I consider that a triumph.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Four Triangles]]></title>
@@ -135,6 +159,96 @@
 <p><a href="/images/articles/ajax_examples/Google.png"><img class="center" src="/images/articles/ajax_examples/Google.png" title="&#34;Was pagination so terrible?&#34;" alt="&#34;Was pagination so terrible?&#34;"></a></p>
 
 <p>Seriously. Is this actually such a horrible thing? I doubt it.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cry Me a River, Emails]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/03/26/cry-me-a-river-emails/"/>
+    <updated>2013-03-26T00:59:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/03/26/cry-me-a-river-emails</id>
+    <content type="html"><![CDATA[<h3>Or: Why You Should NEVER Make Robots Fake Sincerity</h3>
+
+<p>While helping a friend construct a website, I signed up for Weebly. I didn't even have a website, I was just a collaborator. I didn't want anything to do with Weebly. For some reason, she began getting uncomfortably clingy. Look at this as an example of how to creep out your customers.</p>
+
+<!-- more -->
+
+
+<p>I'll be clear now that I do not like drag-and-drop site builders. Only one such service have I ever described in terms that may be optimistically construed as "fond" -- that service being Squarespace. And that's only because they opened up their internals to developers.</p>
+
+<p>So have a look at this.</p>
+
+<p><img src="/images/articles/Weebly-Believing.png" title="Don't stop believin' (in your website)" ></p>
+
+<p><a href="/extras/weebly-believing.html">If you can't see the image, click here for the text version.</a></p>
+
+<p>The time since I signed up is probably the second worst thing about this. It's just odd. It reminds me that there is some task somewhere (clearly not a human) that is looking over less-than-frequently-active accounts and telling them to get going. It's unbelievably insincere, and it's frankly a little condescending. How so?</p>
+
+<blockquote><p>Maybe you got busy and forgot about your website. We understand. When you signed up you probably had a vision for your site. We want to help you make that a reality. We promise that Weebly truly is the easiest way to create a website.</p></blockquote>
+
+<p>Of course I had a vision. Perhaps I own a business, I sell goods, I'm an artist, I'm a traveller, I'm a game show contestant with a penchant for blogging. What's gonna matter is my content. If I'm passionate enough, I'll find the best way to present it. I am disinclined to believe that anyone who has any real desire to run a website would forget about it for 29 days, 16 hours, 7 minutes and 47 seconds.</p>
+
+<p>This helpful message is a little too chummy. It is certainly not sincerely endorsed by the Weebly Team, it was sent by a robot that's been told how to sound friendly. A person wrote generic text without much thought and I was on the receiving end of a template engine fed with those words. Nothing really makes me feel less cared for than robots acting like people. Giving them a little personality can be okay, but this is kind of insulting. Is your team actually nervous that I might not realize the full potential of my business? That's something investors worry about. And something robots think nothing of.</p>
+
+<p>Then this happens:</p>
+
+<p><img src="/images/articles/Weebly-Sniffle.png" title="Sniffle. Sniffle..." ></p>
+
+<p><a href="/extras/weebly-sniffle.html">If you can't see the image, click here for the text version.</a></p>
+
+<p>The subject of this message was literally "That's sad." No, this email is the sad thing. You trained machines to sound sympathetic, and it's just unsettling to make them cry. <em>For the love of God, knock it off.</em> There's nothing wrong with the concept of automated messages. But <em>please</em> do not make them f--king cry. That does not make me feel cared for. Your team doesn't seem to be there for me, it seems like you need to clutch your flaky customers in a death grip.</p>
+
+<p>Don't fret though, you fantastically sincere liars, I think this email could be fixed pretty easily.</p>
+
+<p><img src="/images/articles/Weebly-Sniffle-fixed.png" title="Just take a Sharpie to it." ></p>
+
+<p>There. That's basically free advice, Weebly. If your team is feeling sincere and nervous and sympathetic, my typical consulting fee is $17,000.</p>
+
+<p>For the record, one of their founders eventually sent me a personal email asking for feedback. Way to go, fellas. That's where you lay on the charm, in the actual exchanges between actual people. That redeemed their support team a bit. That was someone who was really wondering what went wrong and wanted to find a solution. I'm not being sarcastic there, if you're looking to connect with a customer, a real live human being is the way to do it. I absolutely love that.</p>
+
+<p>Sending automated emails that cry is tantamount to deception. That's what I have to say to them.</p>
+
+<p>I can't be the only person that feels this way. I very highly value genuine interactions, and pretty much any attempt to imbue emotion without real effort is simply insulting to me.</p>
+
+<p>Seriously, without the mendacious nervousness and sniffles, these would be just helpful emails. I might have read them without rolling my eyes.</p>
+
+<p>If you're someone who also dislikes this sort of indiscretion, I'd appreciate a comment so I know I'm not alone.</p>
+
+<p>Also, if you happen to be an English professor and would like to tell me whether I should have used <em>whom</em> in that last sentence, I would appreciate it.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Complicated or Other Kind of Complicated?]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/03/17/complicated-or-other-kind-of-complicated/"/>
+    <updated>2013-03-17T03:01:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/03/17/complicated-or-other-kind-of-complicated</id>
+    <content type="html"><![CDATA[<p>I make a lot of choices while working on a project, mostly a large collection of tiny architectural choices that will impact how I build my applications. The words  <em>simple</em> and <em>complicated</em>, I've found, are very deceptive blanket statements. Sometimes, I have to trade off different kinds of complexity that add upp to the greatest efficiency versus smallest amount of frustration.</p>
+
+<!-- more -->
+
+
+<h2>Sometimes You Can't Win.</h2>
+
+<p>There are so many different ideas about the easiest/best/fastest/simplest way to do things. Seems like everyone's got a philosophy. <strong>NOW, THERE IS NOTHING INHERENTLY WRONG WITH THAT.</strong> I've got my own little bubble of philosophy I like to stick to. The unfortunate part is that there is a pretty wide spectrum of impresicse language that <a href="http://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Words_to_watch#Puffery">attribute ambiguous meaning to ideas without much factual support.</a></p>
+
+<p>I'll give an example. I'm laying out all the bits and pieces of a medical app right now, and I'm at the pivotal point of getting to pick what language and framework I'll be using. I've surveyed a bunch of web technologies to choose the best <em>(with "best" being a relative term).</em></p>
+
+<p>Everybody wants simplicity, but be aware what you may be trading it for. In my case, I'm choosing between PHP with the <a href="http://laravel.com/">Laravel</a> framework or Ruby on Rails. Familiarity is the big discrepancy. Both parties have proponents and those who preach the beautiful elegance of their respective platform. But PHP is at heart an icky language and I know little about serious use of Ruby at this point. <strong>DAMN.</strong></p>
+
+<p>And when they dangle s--t like this in front of you:</p>
+
+<p><img src="/images/articles/rails.png" alt="Ruby on Rails homepage banner" /></p>
+
+<p><strong>WHO COULD POSSIBLY RESIST?</strong></p>
+
+<p>Tread lightly, Armand. Don't get caught up in the sparkling beauty of these systems. Remember that something's gotta give and to barter for the kind of complexity you can handle best.</p>
+
+<p>I know PHP and Laravel very well, meaning I could get straight to work building the app. Rails seems super slick, though I admittedly know little about it. I'd have to learn everything while I work. As I mentioned in <a href="/blog/2013/03/09/preeow/">my introductory post</a>, I love learning, but I take my sweet time to get the in-depth understanding I desire.</p>
+
+<p>I get easily flustered when I begin to subscribe to everyone's callouts regarding the streamlined versus the intricate. Not all complications have to be crippling, but be sure to pick them carefully. Until we start writing our apps with LOVE (<a href="http://worldofgoo.wikia.com/wiki/MOM"><em>a new scripting language where you write applications using 'feelings'</em></a>) I believe these sorts of choices will continue to thornily remind us of their irksomeness.</p>
+
+<p>Pick your manifold code-wads with care.</p>
 ]]></content>
   </entry>
   

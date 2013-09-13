@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Making Progress | Zerillian Engineering]]></title>
-  <link href="http://blog.zerilliworks.net/blog/categories/making-progress/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Serious | Zerillian Engineering]]></title>
+  <link href="http://blog.zerilliworks.net/blog/categories/serious/atom.xml" rel="self"/>
   <link href="http://blog.zerilliworks.net/"/>
   <updated>2013-09-12T23:59:47-04:00</updated>
   <id>http://blog.zerilliworks.net/</id>
@@ -14,55 +14,113 @@
 
   
   <entry>
-    <title type="html"><![CDATA[50 Cents Doesn't Buy a Lot of Trouble]]></title>
-    <link href="http://blog.zerilliworks.net/blog/2013/07/23/50-cents-doesnt-buy-a-lot-of-trouble/"/>
-    <updated>2013-07-23T22:46:00-04:00</updated>
-    <id>http://blog.zerilliworks.net/blog/2013/07/23/50-cents-doesnt-buy-a-lot-of-trouble</id>
-    <content type="html"><![CDATA[<p>Here in Ithaca, we've got a pleasant little outdoor concourse of restaurants and merchant establishments running beside pavilions and statues and trees: The Ithaca Commons. Lately, it's had everything ripped out for rennovation, but... Still.</p>
-
-<p>Whenever I'm on the Commons, I go to a toy store on State street and buy a bouncy ball for 50 cents. As I walk, I bounce it on the ground and against walls. It's a benign, calming activity. I've thrown them against buildings, bounced them high in the air, and naturally lost all of them.</p>
+    <title type="html"><![CDATA[Blade Extensions in Laravel 4]]></title>
+    <link href="http://blog.zerilliworks.net/blog/2013/07/10/blade-extensions-in-laravel-4/"/>
+    <updated>2013-07-10T00:05:00-04:00</updated>
+    <id>http://blog.zerilliworks.net/blog/2013/07/10/blade-extensions-in-laravel-4</id>
+    <content type="html"><![CDATA[<p>Laravel 4 is here, and it's a thing of beauty. Among all the remarkable new features remains the ability to extend the Blade template system with your own statements and functionality. I previously wrote about how to do it in Laravel 3, and thankfully it is equally straightforward in Laravel 4. There's even a bit more explanation this time around. So here it is, Blade Extensions for every artisan's favorite framework.</p>
 
 <!-- more -->
 
 
-<p>I've accidentally flung them out into the streets, at windows, down drains, and even into other people. I keep buying them and losing them every time. I don't mind. It adds an element of chaos to a life I spend so much time structuring. Those superballs are utterly unpredictable.</p>
+<p>Blade has a nice 'n easy syntax for template creation that works by substituting PHP for the Blade statements when a view is rendered. Making a Blade extension means defining a closure function that does this substitution and telling Laravel to run it on the stack of Blade compilers already in place.</p>
 
-<p>For a while, I can control them. Though it's inevitable that they hit a pebble and bounce far off, leading me into a stumbling chase to recapture them. It keeps happening, and I never know when. All I can do is run clumsily and make attempts at snatching them, thinking the whole time that there's a good chance I never see that ball again.</p>
+<p>This is done like so:</p>
 
-<p>Chaos is necessary. It shatters my perception that I have anything more than a suggestive input on my life. In reality, I control very little. Somehow the universe keeps working fairly predictably, but it's easy to forget that I can lose control in an instant to a roll of the metaphoric dice.</p>
+<pre><code>Blade::extend(function($view) {
+    // Statement code...
+});
+</code></pre>
 
-<p>So those little bouncy rubber balls serve not only as a fun distraction, but a reminder that the gears of these ephemeral probability engines are always grinding; they are constantly on the verge of engaging with potentially life-changing force. Part of me hopes that when I lose one of those balls it rolls into another life and adds some intrigue. They forcibly put predictability on hold and seed chaotic activity.</p>
+<p>Just like Laravel 3. After calling <code>Blade::extend()</code>, the closure you define will automatically be run for every view. The <code>$view</code> variable contains the plain text contents of the view to be rendered. The rendering takes place on this raw data, passing the view out to the PHP parser after all the Blade statements have been evaluated.</p>
 
-<p>In a time when fifty cents doesn't buy a whole lot of trouble, I consider that a triumph.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Four Triangles]]></title>
-    <link href="http://blog.zerilliworks.net/blog/2013/05/29/four-triangles/"/>
-    <updated>2013-05-29T01:29:00-04:00</updated>
-    <id>http://blog.zerilliworks.net/blog/2013/05/29/four-triangles</id>
-    <content type="html"><![CDATA[<p>My professional identity has been through many iterations, one of which demanded a better logo. A simpler logo. A logo that would guide my journey to becomeing a mastermind.</p>
+<p>You can plop Blade extensions in your routes.php or filters.php file or place them in a separate file to be included via the auto-loader or another mechanism you choose. They just have to be <em>somewhere,</em> since Laravel uses its autoloader and IoC to resolve the Blade class anywhere.</p>
 
-<p>Or, I dunno, I just got sick of my old one. Here's how it went.</p>
+<p><a href="http://laravel.com/api/class-Illuminate.View.Compilers.BladeCompiler.html">Take a peek at the class</a> and study it a little. You'll notice some patterns, which you'll be replicating in your Blade extensions. If you take time to observe how they work and read up on regular expressions, I won't have to explain them to you.</p>
 
-<!-- more -->
+<p>Almost all of my view layouts have a <code>@yield('title')</code> statement in the document head. The title of the page is set by the view that extends the layout. Normally, that would look like this:</p>
 
+<pre><code>@section('title')
+Page Title
+@stop
+</code></pre>
 
-<p>When I first spiffed up a logo, it was wicked nasty.</p>
+<p>It would be nicer this way, I think:</p>
 
-<p><img src="/images/articles/four-triangles/old_logo.png">
-<em>LOOK AT THAT SON OF A BITCH.</em></p>
+<pre><code>@title('Page Title')
+</code></pre>
 
-<p>It served me well for a couple of years when I did work in high school and before my startup experience. But at the beginning of 2012 it was in need of a refresh. I tried to remove as much extra detail as possible. I tried a few logos before thinking about the absolute fewest things I would need. The polygon with the fewest sides, the triangle, and the fewest triangles necessary. Which turned out to be four.</p>
+<p>The extension looks a little intimidating, but it really isn't. It's just a wrapper for a standard find-and-replace function (<code>preg_replace()</code>) that swaps the custom Blade tag with some raw PHP.</p>
 
-<p>People sometimes tell me that they don't see a Z and a W right away. I'm okay with that. I like that it's a little abstract.</p>
+<p>Update: <a href="http://localhost:4000/blog/2013/07/10/blade-extensions-in-laravel-4/#comment-1013474993">It's been pointed out to me</a> that there's an existing function to create matchers for PHP swaps like this. Look at the <a href="http://laravel.com/api/class-Illuminate.View.Compilers.BladeCompiler.html#_createMatcher">createMatcher docs.</a></p>
 
-<p>Threw this fiddle together to show the four simple shapes and give them some attitude. This drifting logo sat on the homepage of zerilliworks.net while the blog was under construction.</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php</span>
+</span><span class='line'><span class="x">Blade::extend(function($view) {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;$pattern = &#39;/@title\(\s?[\&#39;\&quot;](.*)[\&#39;\&quot;]\s?\)/&#39;;</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;  $replacement = &quot;&amp;lt;?php $&lt;strong&gt;env-&gt;startSection(&#39;title&#39;);?&gt;$1&amp;lt;?php $&lt;/strong&gt;env-&gt;stopSection();?&gt;&quot;;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;return preg_replace($pattern, $replacement, $view);</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;});&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/adNUq/embedded/result,js,html,css/light/"></iframe></p>
+<p>Laravel has a variable to refer to its environment/execution context. That's <code>$__env</code>. The methods <code>startSection()</code> and <code>stopSection()</code> do pretty much what you'd expect. So when making a Blade template that extends a layout, such as this:
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>title.blade.php  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">@extends(&#39;master&#39;)&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;@section(&#39;title&#39;)</span>
+</span><span class='line'><span class="x">Good Site, Home of the Good Site.</span>
+</span><span class='line'><span class="x">@stop</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>You can mouse over or tap on them to get them back in line. Cheeky bastards. You can also see the original under construction page <a href="/extras/under_construction.html">here.</a> The drifting triangles take a while to manifest, they were more of an easter egg.</p>
+<p>You end up with a cached view that looks like this:
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>title.blade.php (Rendered)  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php $__env-&gt;startSection(&#39;title&#39;); ?&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;Good Site, Home of the Good Site.&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;&amp;lt;?php $__env-&gt;stopSection(); ?&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;&amp;lt;?php echo $&lt;strong&gt;env-&gt;make(&#39;main&#39;, array_except(get_defined_vars(), array(&#39;&lt;/strong&gt;data&#39;, &#39;__path&#39;)))-&gt;render(); ?&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Using the extension defined previously, this same output is produced. Don't fret over the last line. You can probably guess what it does. Just remember that <code>$__env-&gt;startSection()</code> and <code>$__env-&gt;stopSection()</code> are what stake out a certain chunk of content. If you sniff around in the <a href="http://laravel.com/api/source-class-Illuminate.View.Compilers.BladeCompiler.html">BladeCompiler API</a>, you can find the PHP that backs up the stock Blade statements.</p>
+
+<p>This is just the beginning. If you want to see a markup extension, take a look at <a href="/blog/2013/04/03/blade-extensions-in-laravel/#markup-extensions">my last article</a>. Add in functional PHP to your custom Blade tags if you want. As long as you can regex-match and substitute it, the sky's the limit. Be mindful of the number of extensions you add, since every view rendered has to be passed through them all at least once. The overhead isn't intrinsically huge, but be careful anyway. And be thankful that Laravel does you a favor caching things.</p>
+
+<p><em>Full disclosure: I've yet to fully plunge the depths of Laravel 4, so this article may contain small inaccuracies. I've tested the code semi-scientifically and it works as expected. If it turns out I'm full of shit, leave a note or send a message to armand(at)zerilliworks(dot)net.</em></p>
 ]]></content>
   </entry>
   
